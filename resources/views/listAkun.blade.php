@@ -51,34 +51,6 @@
         </div>
       </div>
       <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
-        <img src="https://cdn.donmai.us/sample/98/51/__valorant_sample-98513553621bf97ef6b5b6f4c9c01b6b.jpg" alt="Valorant" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Valorant - Diamond</h3>
-          <p class="text-sm text-gray-300 mb-2">Skin Reaver & Prime, agent lengkap, battle pass aktif.</p>
-          <p class="text-green-400 font-bold mb-2">Rp 750.000</p>
-          <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 text-sm rounded text-white font-semibold">Lihat Detail</a>
-        </div>
-      </div>
-      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
-        <img src="https://cdn.donmai.us/sample/98/51/__valorant_sample-98513553621bf97ef6b5b6f4c9c01b6b.jpg" alt="Valorant" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Valorant - Diamond</h3>
-          <p class="text-sm text-gray-300 mb-2">Skin Reaver & Prime, agent lengkap, battle pass aktif.</p>
-          <p class="text-green-400 font-bold mb-2">Rp 750.000</p>
-          <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 text-sm rounded text-white font-semibold">Lihat Detail</a>
-        </div>
-      </div>
-      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
-        <img src="https://cdn.donmai.us/sample/98/51/__valorant_sample-98513553621bf97ef6b5b6f4c9c01b6b.jpg" alt="Valorant" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Valorant - Diamond</h3>
-          <p class="text-sm text-gray-300 mb-2">Skin Reaver & Prime, agent lengkap, battle pass aktif.</p>
-          <p class="text-green-400 font-bold mb-2">Rp 750.000</p>
-          <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 text-sm rounded text-white font-semibold">Lihat Detail</a>
-        </div>
-      </div>
-
-      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
         <img src="https://cdn1.codashop.com/S/content/common/images/mno/pubgm_new.png" alt="PUBG Mobile" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2">PUBG Mobile - Max Outfit</h3>
