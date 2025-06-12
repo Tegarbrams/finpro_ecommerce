@@ -33,6 +33,9 @@ Route::get('/register', function () {
 Route::get('/jual', function () {
     return view('jual');
 });
+Route::get('/testes', function () {
+    return view('testes');
+});
 
 
 
