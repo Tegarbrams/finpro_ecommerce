@@ -28,21 +28,30 @@
 
   <!-- Hero Section -->
   <section class="text-center py-16 bg-gray-900">
-    <h1 class="text-4xl font-bold mb-4">Jual & Beli Akun Game Online</h1>
+    <h1 class="text-4xl font-bold mb-4">JUAL AKUN GAME ONLINE</h1>
     <p class="text-lg mb-6">Platform aman dan terpercaya untuk semua gamer!</p>
     <a href="#" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white font-semibold">Mulai Sekarang</a>
   </section>
 
   <!-- Game Categories -->
   <section class="container mx-auto text-center my-10">
-    <h2 class="text-2xl font-semibold mb-6">Game Populer</h2>
-    <div class="flex justify-center space-x-6">
-      <img src="{{ asset('asset/iconml.jpg') }}" alt="MLBB" class="h-24">
-      <img src="{{ asset('asset/iconpubg.png') }}" alt="PUBG" class="h-24">
-      <img src="{{ asset('asset/iconvalo.png') }}" alt="Valorant" class="h-24">
-      <img src="{{ asset('asset/iconff.jpg') }}" alt="Free Fire" class="h-24">
-    </div>
-  </section>
+  <h2 class="text-2xl font-semibold mb-6">Game Populer</h2>
+  <div class="flex justify-center space-x-6">
+    <a href="/game/mlbb">
+      <img src="{{ asset('asset/iconml.jpg') }}" alt="MLBB" class="h-34 hover:scale-105 transition-transform duration-300">
+    </a>
+    <a href="/game/pubg">
+      <img src="{{ asset('asset/iconpubg.png') }}" alt="PUBG" class="h-34 hover:scale-105 transition-transform duration-300">
+    </a>
+    <a href="/game/valorant">
+      <img src="{{ asset('asset/iconvalo.png') }}" alt="Valorant" class="h-34 hover:scale-105 transition-transform duration-300">
+    </a>
+    <a href="/game/freefire">
+      <img src="{{ asset('asset/iconff.jpg') }}" alt="Free Fire" class="h-34 hover:scale-105 transition-transform duration-300">
+    </a>
+  </div>
+</section>
+
 
   <!-- Account Listings -->
   <section class="container mx-auto px-4">
