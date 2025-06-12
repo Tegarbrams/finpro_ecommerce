@@ -69,7 +69,7 @@
         <h3 class="text-xl font-semibold mt-4">Akun Valorant - Rank Diamond</h3>
         <p class="text-sm text-gray-400">Skin bundle premium + battle pass aktif</p>
         <p class="text-green-400 font-semibold mt-2">Rp 750.000</p>
-        <a href="#" class="mt-3 inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">Lihat Detail</a>
+        <a href="/detailProduk" class="mt-3 inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">Lihat Detail</a>
       </div>
 
       <div class="bg-gray-800 p-4 rounded-lg shadow-md">
