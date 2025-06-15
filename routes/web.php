@@ -1,7 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
 
 Route::get('/', function () {
     return view('index');
@@ -47,5 +50,8 @@ Route::post('/login', [LoginController::class, 'store']);
 // Rute untuk proses logout
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
+// Rute untuk menampilkan form registrasi
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
 
-
+// Rute untuk memproses data dari form registrasi
+Route::post('/register', [RegisterController::class, 'store']);
