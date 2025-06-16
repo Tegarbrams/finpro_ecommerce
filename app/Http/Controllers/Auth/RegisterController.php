@@ -26,18 +26,34 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // Validasi input
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|min:6',
+        //     'terms' => 'required', // Pastikan terms dicentang
+        // ]);
+
+        // // Buat user baru
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => bcrypt($request->password),
+        // ]);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'role' => 'required|in:admin,user', // Validasi role
             'terms' => 'required', // Pastikan terms dicentang
         ]);
-
+    
         // Buat user baru
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'role' => $request->role, // Tambahkan role
         ]);
 
         // Login otomatis

@@ -20,6 +20,8 @@ class LoginController extends Controller
     /**
      * Menangani permintaan otentikasi (proses login).
      */
+   
+
     public function store(Request $request)
     {
         // 1. Validasi input dari form
@@ -27,20 +29,28 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
-        // Opsi untuk fitur "Remember Me"
+    
+        // 2. Ambil opsi "Remember Me"
         $remember = $request->boolean('remember');
-
-        // 2. Mencoba untuk melakukan otentikasi user
+    
+        // 3. Mencoba untuk melakukan otentikasi user
         if (Auth::attempt($credentials, $remember)) {
-            // 3. Jika berhasil, regenerate session untuk keamanan
+            // 4. Jika berhasil, regenerate session untuk keamanan
             $request->session()->regenerate();
-
-            // 4. Redirect ke halaman yang dituju setelah login (default: /dashboard)
-            return redirect()->intended('dashboard');
+            
+            $user = Auth::user();
+            
+            // 5. Redirect berdasarkan role
+            if ($user->isAdmin()) {
+                return redirect()->intended('/admin/dashboard')
+                    ->with('success', 'Selamat datang, Admin!');
+            } else {
+                return redirect()->intended('/index')
+                    ->with('success', 'Selamat datang!');
+            }
         }
-
-        // 5. Jika gagal, kembalikan ke form login dengan pesan error
+    
+        // 6. Jika gagal, throw ValidationException
         throw ValidationException::withMessages([
             'email' => 'Email atau password yang Anda masukkan salah.',
         ]);
