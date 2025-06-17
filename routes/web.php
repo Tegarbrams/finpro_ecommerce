@@ -1,7 +1,11 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AuthController;
+
 
 Route::get('/', function () {
     return view('index');
@@ -37,6 +41,12 @@ Route::get('/jual', function () {
 Route::get('/testes', function () {
     return view('testes');
 });
+Route::get('/admin/register', function () {
+    return view('admin/register');
+});
+Route::get('/admin/dashboard', function () {
+    return view('admin/dashboard');
+});
 
 // Rute untuk menampilkan form login
 Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -48,7 +58,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 // Rute untuk Proses dataListAkun
 
-Route::get('/dataListAkun', function () {
-    return view('dataListAkun');
-});
 
+
+// Route::post('/auth', [AuthController::class, 'store']);
