@@ -46,6 +46,9 @@ Route::post('/login', [LoginController::class, 'store']);
 
 // Rute untuk proses logout
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+// Rute untuk Proses dataListAkun
 
-
+Route::get('/dataListAkun', function () {
+    return view('dataListAkun');
+});
 

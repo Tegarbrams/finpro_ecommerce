@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Account Marketplace</title>
+  <title>Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -14,7 +14,7 @@
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-gray-800 p-4 sticky top-0 z-10 shadow-md">
+  <nav class="bg-gray-800 p-8 sticky top-0 z-10 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-2xl font-bold">Tukang Akun</h1>
       <ul class="flex space-x-6">
@@ -34,7 +34,8 @@
    <p class="text-lg text-indigo-5- mt-4">
     Temukan akun game favoritmu dengan harga terbaik!
   </p>
-    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded mt-24">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-8 px-24 rounded mt-24
+    ">
     Mulai Sekarang
     </button>
   </section>
@@ -46,13 +47,13 @@
     <a href="dataListAkun">
       <img src="{{ asset('asset/image-1.png') }}" alt="MLBB" class="h-40 rounded-md hover:scale-105 transition duration-300">
     </a>
-    <a href="/game/valorant">
+    <a href="dataListAkun">
       <img src="{{ asset('asset/image-2.png') }}" alt="Valorant" class="h-40 rounded-md hover:scale-105 transition duration-300">
     </a>
-    <a href="/game/pubg">
+    <a href="dataListAkun">
       <img src="{{ asset('asset/image-3.png') }}" alt="PUBG" class="h-40 rounded-md hover:scale-105 transition duration-300">
     </a>
-    <a href="/game/freefire">
+    <a href="dataListAkun">
       <img src="{{ asset('asset/image-4.png') }}" alt="Free Fire" class="h-40 rounded-md hover:scale-105 transition duration-300">
     </a>
   </div>
@@ -61,10 +62,10 @@
 
 
   <!-- Account Listings -->
-  <section class="container mx-auto px-4">
+  <section class="container mx-auto px-8">
     <h2 class="text-2xl font-semibold mb-6">Akun Terbaru</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <div class="bg-gray-800  p-4 rounded-lg shadow-md">
         <img src="{{ asset('asset/akun valo.jpg') }}" alt="Akun Valorant" class="w-full h-40 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Akun Valorant - Rank Diamond</h3>
         <p class="text-sm text-gray-400">Skin bundle premium + battle pass aktif</p>
