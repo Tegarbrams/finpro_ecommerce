@@ -33,7 +33,9 @@ Route::get('/listAkun', function () {
 
 Route::get('/register', function () {
     return view('register');
-});
+})->name('register');
+
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/jual', function () {
     return view('jual');
@@ -44,10 +46,12 @@ Route::get('/testes', function () {
 Route::get('/admin/register', function () {
     return view('admin/register');
 });
-Route::get('/admin/dashboard', function () {
-    return view('admin/dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
-
+Route::get('/tambah', function () {
+    return view('tambah');
+});
 // Rute untuk menampilkan form login
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 
