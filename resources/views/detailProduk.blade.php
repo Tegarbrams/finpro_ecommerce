@@ -14,9 +14,13 @@
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-gray-800 p-4 sticky top-0 z-10 shadow-md">
+  <nav class="bg-blue-900 p-4 sticky top-0 z-10 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">GameMarket</h1>
+      <div class="flex items-center space-x-2">
+  <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-12 h-12">
+  <h1 class="text-2xl font-bold">Tukang Akun</h1>
+</div>
+
       <ul class="flex space-x-6">
         <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
         <li><a href="#" class="hover:text-blue-400">Game</a></li>
@@ -30,7 +34,7 @@
   <section class="container mx-auto px-4 py-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
       <!-- Foto utama -->
-      <img src="https://cdn1.codashop.com/S/content/common/images/mno/mobilelegends_new.png" alt="MLBB Account" class="w-full h-auto rounded-lg shadow-md">
+      <img src="asset/skin_ml.png" alt="MLBB Account" class="w-full h-auto rounded-lg shadow-md">
 
       <!-- Detail akun -->
       <div>
@@ -53,19 +57,19 @@
     </div>
 
     <!-- Album Foto Akun -->
-    <div class="mt-12">
+    <div class="mt-8">
       <h3 class="text-2xl font-semibold mb-4">Galeri Akun</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <img src="https://i.pinimg.com/originals/ae/5f/83/ae5f835a6828e267d66d62e7e5f53cf5.jpg" alt="Skin 1" class="rounded-lg shadow-md">
-        <img src="https://i.pinimg.com/736x/d6/df/e2/d6dfe20307efae8b930d3214eb679fcb.jpg" alt="Skin 2" class="rounded-lg shadow-md">
-        <img src="https://i.pinimg.com/originals/4a/e6/76/4ae6762fa24bdbffbd4de661b40fa041.jpg" alt="Skin 3" class="rounded-lg shadow-md">
-        <img src="https://i.pinimg.com/736x/20/29/f5/2029f5f33637e48a0631d22ccf3f7586.jpg" alt="Skin 4" class="rounded-lg shadow-md">
+        <img src="asset/skin_1.png" alt="Skin 1" class="rounded-lg shadow-md">
+        <img src="asset/skin_2.png" alt="Skin 2" class="rounded-lg shadow-md">
+        <img src="asset/skin_3.png" alt="Skin 3" class="rounded-lg shadow-md">
+        <img src="asset/skin_4.png" alt="Skin 4" class="rounded-lg shadow-md">
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="mt-20 bg-gray-800 text-center py-6">
+ <footer class="mt-20 bg-blue-900 text-center py-6">
     <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
     <div class="mt-2">
       <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>

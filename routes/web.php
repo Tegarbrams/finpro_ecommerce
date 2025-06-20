@@ -27,6 +27,10 @@ Route::get('/listAkun', function () {
     return view('listAkun');
 });
 
+Route::get('/dataListAkun', function () {
+    return view('dataListAkun');
+});
+
 // Route::get('/login', function () {
 //     return view('login');
 // });

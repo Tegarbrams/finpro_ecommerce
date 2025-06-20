@@ -6,6 +6,9 @@
   <title>Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -14,9 +17,13 @@
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-gray-800 p-8 sticky top-0 z-10 shadow-md">
+  <nav class="bg-blue-900 p-4 sticky top-0 z-10 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Tukang Akun</h1>
+      <div class="flex items-center space-x-2">
+  <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-12 h-12">
+  <h1 class="text-2xl font-bold">Tukang Akun</h1>
+</div>
+
       <ul class="flex space-x-6">
         <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
         <li><a href="#" class="hover:text-blue-400">Game</a></li>
@@ -34,11 +41,55 @@
    <p class="text-lg text-indigo-5- mt-4">
     Temukan akun game favoritmu dengan harga terbaik!
   </p>
-    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-8 px-24 rounded mt-24
-    ">
-    Mulai Sekarang
-    </button>
   </section>
+  
+
+<div id="default-carousel" class="relative w-full mt-4" data-carousel="slide"> <!-- Added margin-top -->
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <!-- Item 1 -->
+        <div class="duration-700 ease-in-out" data-carousel-item>
+            <img src="asset/game_ml.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
+        </div>
+        <!-- Item 2 -->
+        <div class="duration-700 ease-in-out" data-carousel-item>
+            <img src="asset/game_ml.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
+        </div>
+        <!-- Item 3 -->
+        <div class="duration-700 ease-in-out" data-carousel-item>
+            <img src="asset/game_ml.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
+        </div>
+        <!-- Item 4 -->
+        <div class="duration-700 ease-in-out" data-carousel-item>
+            <img src="asset/game_ml.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white focus:outline-none">
+            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white focus:outline-none">
+            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
 
   <!-- Game Categories -->
   <section class="container mx-auto text-center my-10">
@@ -92,7 +143,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="mt-20 bg-gray-800 text-center py-6">
+  <footer class="mt-20 bg-blue-900 text-center py-6">
     <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
     <div class="mt-2">
       <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
