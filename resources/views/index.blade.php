@@ -113,22 +113,39 @@
 
 
   <!-- Game Categories -->
-  <section class="container mx-auto text-center my-10">
-  <h2 class="text-3xl font-semibold mb-8 text-white">Game Terpopuler</h2>
-  <div class="flex justify-center space-x-6">
-    <a href="dataListAkun">
-      <img src="{{ asset('asset/image-1.png') }}" alt="MLBB" class="h-40 rounded-md hover:scale-105 transition duration-300">
-    </a>
-    <a href="dataListAkun">
-      <img src="{{ asset('asset/image-2.png') }}" alt="Valorant" class="h-40 rounded-md hover:scale-105 transition duration-300">
-    </a>
-    <a href="dataListAkun">
-      <img src="{{ asset('asset/image-3.png') }}" alt="PUBG" class="h-40 rounded-md hover:scale-105 transition duration-300">
-    </a>
-    <a href="dataListAkun">
-      <img src="{{ asset('asset/image-4.png') }}" alt="Free Fire" class="h-40 rounded-md hover:scale-105 transition duration-300">
-    </a>
-  </div>
+  <section class="container mx-auto px-4 text-center my-6 md:my-10">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-white">Game Terpopuler</h2>
+    
+    <!-- Grid Layout for Responsive Design -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <a href="dataListAkun" class="group">
+            <img src="{{ asset('asset/image-1.png') }}" 
+                 alt="MLBB" 
+                 class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+            <p class="text-white text-sm md:text-base mt-2 group-hover:text-blue-400 transition-colors duration-200">Mobile Legends</p>
+        </a>
+        
+        <a href="dataListAkun" class="group">
+            <img src="{{ asset('asset/image-2.png') }}" 
+                 alt="Valorant" 
+                 class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+            <p class="text-white text-sm md:text-base mt-2 group-hover:text-blue-400 transition-colors duration-200">Valorant</p>
+        </a>
+        
+        <a href="dataListAkun" class="group">
+            <img src="{{ asset('asset/image-3.png') }}" 
+                 alt="PUBG" 
+                 class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+            <p class="text-white text-sm md:text-base mt-2 group-hover:text-blue-400 transition-colors duration-200">PUBG</p>
+        </a>
+        
+        <a href="dataListAkun" class="group">
+            <img src="{{ asset('asset/image-4.png') }}" 
+                 alt="Free Fire" 
+                 class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+            <p class="text-white text-sm md:text-base mt-2 group-hover:text-blue-400 transition-colors duration-200">Free Fire</p>
+        </a>
+    </div>
 </section>
 
 
