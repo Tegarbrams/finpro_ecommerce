@@ -1,12 +1,11 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\PenggunaController;
 
-
+// Home routes
 Route::get('/', function () {
     return view('index');
 });
@@ -31,41 +30,42 @@ Route::get('/dataListAkun', function () {
     return view('dataListAkun');
 });
 
-// Route::get('/login', function () {
-//     return view('login');
-// });
+// Authentication Routes
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
-
+// Registration Routes
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
+// Other routes
 Route::get('/jual', function () {
     return view('jual');
 });
+
 Route::get('/testes', function () {
     return view('testes');
 });
+
 Route::get('/admin/register', function () {
     return view('admin/register');
 });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->middleware('auth'); // Tambahkan middleware auth untuk proteksi
+
 Route::get('/tambah', function () {
     return view('tambah');
 });
-// Rute untuk menampilkan form login
-Route::get('/login', [LoginController::class, 'create'])->name('login');
 
-// Rute untuk memproses data dari form login
-Route::post('/login', [LoginController::class, 'store']);
-
-// Rute untuk proses logout
-Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
-// Rute untuk Proses dataListAkun
-
-
-
-// Route::post('/auth', [AuthController::class, 'store']);
+// User management routes (untuk admin)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/list', [PenggunaController::class, 'index']);
+    Route::get('/user/create', [PenggunaController::class, 'create_in_admin']);
+    Route::post('/user/store', [PenggunaController::class, 'store']);
+    Route::get('/user/edit/{id_user}', [PenggunaController::class, 'edit']);
+    Route::post('/user/update', [PenggunaController::class, 'update']);
+    Route::post('/user/delete', [PenggunaController::class, 'destroy']);
+});

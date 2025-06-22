@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -18,55 +19,67 @@ class LoginController extends Controller
     }
 
     /**
-     * Menangani permintaan otentikasi (proses login).
+     * Proses login (method yang dipanggil dari route POST /login)
      */
-   
-
     public function store(Request $request)
     {
-        // 1. Validasi input dari form
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        // Validasi input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
         ]);
-    
-        // 2. Ambil opsi "Remember Me"
-        $remember = $request->boolean('remember');
-    
-        // 3. Mencoba untuk melakukan otentikasi user
-        if (Auth::attempt($credentials, $remember)) {
-            // 4. Jika berhasil, regenerate session untuk keamanan
-            $request->session()->regenerate();
-            
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            
-            // 5. Redirect berdasarkan role
-            if ($user->isAdmin()) {
-                return redirect()->intended('/admin/dashboard')
-                    ->with('success', 'Selamat datang, Admin!');
-            } else {
-                return redirect()->intended('/index')
-                    ->with('success', 'Selamat datang!');
-            }
+
+            // Regenerate session untuk keamanan
+            $request->session()->regenerate();
+
+            // Simpan data tambahan ke session jika diperlukan
+            session([
+                'login' => true,
+                'email' => $user->email,
+                'role' => $user->role,
+                'id_user' => $user->id,
+                'nama' => $user->name,
+            ]);
+
+            // Redirect berdasarkan role user
+            return $this->redirectBasedOnUserRole($user->role);
         }
-    
-        // 6. Jika gagal, throw ValidationException
-        throw ValidationException::withMessages([
-            'email' => 'Email atau password yang Anda masukkan salah.',
-        ]);
+
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->onlyInput('email');
     }
 
     /**
-     * Menangani proses logout user.
+     * Logout user
      */
     public function destroy(Request $request)
     {
         Auth::logout();
-
+        
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login')->with('success', 'Berhasil logout.');
+    }
+
+    /**
+     * Helper method untuk redirect berdasarkan role
+     */
+    private function redirectBasedOnUserRole($role)
+    {
+        switch ($role) {
+            case 'admin':
+                return redirect()->intended('/admin/dashboard');
+            case 'pembeli':
+                return redirect()->intended('/dashboard');
+            default:
+                return redirect('/login')->with('error', 'Role user tidak valid.');
+        }
     }
 }
