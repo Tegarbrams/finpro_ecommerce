@@ -18,20 +18,41 @@
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
   <nav class="bg-blue-900 p-4 sticky top-0 z-10 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-  <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-12 h-12">
-  <h1 class="text-2xl font-bold">Tukang Akun</h1>
-</div>
-
-      <ul class="flex space-x-6">
-        <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
-        <li><a href="#" class="hover:text-blue-400">Game</a></li>
-        <li><a href="#" class="hover:text-blue-400">Jual Akun</a></li>
-        <li><a href="#" class="hover:text-blue-400">Login</a></li>
-      </ul>
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2">
+                <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-10 h-10 md:w-12 md:h-12">
+                <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-6 text-white">
+                <li><a href="#" class="hover:text-blue-400 transition-colors duration-200">Beranda</a></li>
+                <li><a href="#" class="hover:text-blue-400 transition-colors duration-200">Game</a></li>
+                <li><a href="#" class="hover:text-blue-400 transition-colors duration-200">Jual Akun</a></li>
+                <li><a href="#" class="hover:text-blue-400 transition-colors duration-200">Login</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4">
+            <ul class="flex flex-col space-y-2 text-white">
+                <li><a href="#" class="block py-2 px-4 hover:bg-blue-800 rounded transition-colors duration-200">Beranda</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-blue-800 rounded transition-colors duration-200">Game</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-blue-800 rounded transition-colors duration-200">Jual Akun</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-blue-800 rounded transition-colors duration-200">Login</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
   <!-- Hero Section -->
   <section class="text-center py-16 bg-gray-900">
@@ -151,4 +172,29 @@
     </div>
   </footer>
 </body>
+
+<script>
+  // Mobile menu toggle functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+      }
+  });
+  
+  // Close mobile menu when window is resized to desktop size
+  window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+          mobileMenu.classList.add('hidden');
+      }
+  });
+</script>
+
 </html>
