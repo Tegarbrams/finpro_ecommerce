@@ -11,7 +11,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // ✅ DAFTARKAN MIDDLEWARE ALIAS DI SINI
+        $middleware->alias([
+            'check.login' => \App\Http\Middleware\CekLogin::class,
+            'check.admin' => \App\Http\Middleware\CekSessionAdmin::class,
+            'check.pembeli' => \App\Http\Middleware\CekSessionPembeli::class,
+        ]);
+        
+        // Atau bisa juga menggunakan cara ini:
+        // $middleware->appendToGroup('web', [
+        //     \App\Http\Middleware\CekLogin::class,
+        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -14,7 +14,7 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $data = Pengguna::where('role', 'pembeli')
+        $data = Pengguna::where('role', 'user')
                        ->orderBy('created_at', 'desc')
                        ->get();
         return view('pembeli.list', compact('data'));
@@ -25,7 +25,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('pembeli.register');
+        return view('register');
     }
 
     public function create_in_admin()
@@ -40,7 +40,7 @@ class PenggunaController extends Controller
     {
         // Validasi input
         $request->validate([
-            'email' => 'required|email|unique:user,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'nama' => 'required|string|max:255',
         ], [
@@ -59,9 +59,8 @@ class PenggunaController extends Controller
             $pengguna = Pengguna::create([
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'nama' => $request->nama,
-                'role' => 'pembeli',
-                'last_login' => now(),
+                'name' => $request->nama,
+                'role' => 'user',  // Sesuai dengan enum di database
             ]);
 
             DB::commit();
@@ -74,12 +73,13 @@ class PenggunaController extends Controller
                 session([
                     'login' => true,
                     'email' => $request->email,
-                    'role' => 'pembeli',
-                    'id_user' => $pengguna->id_user,
+                    'role' => 'user',
+                    'level_user' => 'user',  // Untuk kompatibilitas dengan middleware
+                    'id_user' => $pengguna->id,
                     'nama' => $request->nama,
                 ]);
 
-                return redirect('/pembeli/dashboard')->with('success', 'Registrasi berhasil! Selamat datang.');
+                return redirect('/dashboard')->with('success', 'Registrasi berhasil! Selamat datang.');
             }
 
         } catch (\Exception $e) {
@@ -93,13 +93,13 @@ class PenggunaController extends Controller
      */
     public function list_data(Request $request)
     {
-        $query = Pengguna::where('role', 'pembeli');
+        $query = Pengguna::where('role', 'user');
 
         // Fitur pencarian
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->where(function($q) use ($search) {
-                $q->where('nama', 'like', '%' . $search . '%')
+                $q->where('name', 'like', '%' . $search . '%')
                   ->orWhere('email', 'like', '%' . $search . '%');
             });
         }
@@ -113,10 +113,10 @@ class PenggunaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id_user)
+    public function edit($id)
     {
         try {
-            $data = Pengguna::findOrFail($id_user);
+            $data = Pengguna::findOrFail($id);
             return view('pembeli.formUpdate', compact('data'));
         } catch (\Exception $e) {
             return redirect('/user/list')->with('error', 'Data pengguna tidak ditemukan.');
@@ -129,7 +129,7 @@ class PenggunaController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:user,email,' . $request->id_user . ',id_user',
+            'email' => 'required|email|unique:users,email,' . $request->id_user . ',id',
             'nama' => 'required|string|max:255',
             'password' => 'nullable|min:6',
         ], [
@@ -148,7 +148,7 @@ class PenggunaController extends Controller
             // Update data dasar
             $updateData = [
                 'email' => $request->email,
-                'nama' => $request->nama,
+                'name' => $request->nama,
             ];
 
             // Update password jika diisi
@@ -195,13 +195,13 @@ class PenggunaController extends Controller
     public function getUserStats()
     {
         $stats = [
-            'total_pembeli' => Pengguna::where('role', 'pembeli')->count(),
-            'pembeli_bulan_ini' => Pengguna::where('role', 'pembeli')
+            'total_pembeli' => Pengguna::where('role', 'user')->count(),
+            'pembeli_bulan_ini' => Pengguna::where('role', 'user')
                                           ->whereMonth('created_at', now()->month)
                                           ->whereYear('created_at', now()->year)
                                           ->count(),
-            'pembeli_aktif' => Pengguna::where('role', 'pembeli')
-                                      ->where('last_login', '>=', now()->subDays(30))
+            'pembeli_aktif' => Pengguna::where('role', 'user')
+                                      ->where('updated_at', '>=', now()->subDays(30))
                                       ->count(),
         ];
 
@@ -211,10 +211,10 @@ class PenggunaController extends Controller
     /**
      * Show user profile
      */
-    public function profile($id_user)
+    public function profile($id)
     {
         try {
-            $data = Pengguna::findOrFail($id_user);
+            $data = Pengguna::findOrFail($id);
             return view('pembeli.profile', compact('data'));
         } catch (\Exception $e) {
             return redirect('/user/list')->with('error', 'Data pengguna tidak ditemukan.');
@@ -224,11 +224,11 @@ class PenggunaController extends Controller
     /**
      * Update last login timestamp
      */
-    public function updateLastLogin($id_user)
+    public function updateLastLogin($id)
     {
         try {
-            $pengguna = Pengguna::findOrFail($id_user);
-            $pengguna->update(['last_login' => now()]);
+            $pengguna = Pengguna::findOrFail($id);
+            $pengguna->update(['updated_at' => now()]);
             
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
