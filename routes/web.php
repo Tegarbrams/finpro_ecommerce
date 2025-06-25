@@ -81,3 +81,15 @@ Route::middleware(['check.login'])->group(function () {
         Route::post('/user/update-login/{id}', [PenggunaController::class, 'updateLastLogin']);
     });
 });
+
+Route::get('/dashboardAdmin', function () {
+    return view('/Admin/dashboardAdmin');
+});
+
+Route::get('/listacc', function () {
+    return view('/Admin/listacc');
+});
+
+Route::get('/tambah', function () {
+    return view('/Admin/tambah');
+});
