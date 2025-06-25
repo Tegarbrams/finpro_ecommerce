@@ -252,7 +252,7 @@
 
                                     <p class="mt-4 mb-0 leading-normal text-sm">
                                         Already have an account?
-                                        <a href="../pages/sign-in.html" class="font-bold text-slate-700">Sign in</a>
+                                        <a href="/login" class="font-bold text-slate-700">Sign in</a>
                                     </p>
                                 </form>
                             </div>

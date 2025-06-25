@@ -6,6 +6,7 @@ use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PenggunaController extends Controller
 {
@@ -38,28 +39,30 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input
+        // FIX: Validasi yang benar sesuai dengan field form
         $request->validate([
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
-            'nama' => 'required|string|max:255',
+            'password' => 'required|min:6|confirmed', // tambahkan confirmed untuk password_confirmation
+            'name' => 'required|string|max:255', // ganti dari 'nama' ke 'name'
         ], [
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah terdaftar.',
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal 6 karakter.',
-            'nama.required' => 'Nama wajib diisi.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+            'name.required' => 'Nama wajib diisi.',
         ]);
 
         try {
             // Menggunakan database transaction untuk keamanan
             DB::beginTransaction();
 
+            // FIX: Gunakan field 'name' bukan 'nama'
             $pengguna = Pengguna::create([
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'name' => $request->nama,
+                'name' => $request->name, // FIX: ganti dari $request->nama
                 'role' => 'user',  // Sesuai dengan enum di database
             ]);
 
@@ -76,7 +79,7 @@ class PenggunaController extends Controller
                     'role' => 'user',
                     'level_user' => 'user',  // Untuk kompatibilitas dengan middleware
                     'id_user' => $pengguna->id,
-                    'nama' => $request->nama,
+                    'nama' => $request->name, // FIX: gunakan $request->name
                 ]);
 
                 return redirect('/dashboard')->with('success', 'Registrasi berhasil! Selamat datang.');
@@ -84,7 +87,11 @@ class PenggunaController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            return back()->withInput()->with('error', 'Terjadi kesalahan saat menyimpan data.');
+            
+            // FIX: Tambahkan log error untuk debugging
+            Log::error('Registration Error: ' . $e->getMessage());
+            
+            return back()->withInput()->with('error', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
     }
 
@@ -130,13 +137,13 @@ class PenggunaController extends Controller
     {
         $request->validate([
             'email' => 'required|email|unique:users,email,' . $request->id_user . ',id',
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255', // FIX: ganti dari 'nama'
             'password' => 'nullable|min:6',
         ], [
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan pengguna lain.',
-            'nama.required' => 'Nama wajib diisi.',
+            'name.required' => 'Nama wajib diisi.',
             'password.min' => 'Password minimal 6 karakter.',
         ]);
 
@@ -148,7 +155,7 @@ class PenggunaController extends Controller
             // Update data dasar
             $updateData = [
                 'email' => $request->email,
-                'name' => $request->nama,
+                'name' => $request->name, // FIX: ganti dari nama
             ];
 
             // Update password jika diisi
