@@ -13,9 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // ✅ DAFTARKAN MIDDLEWARE ALIAS DI SINI
         $middleware->alias([
-            'check.login' => \App\Http\Middleware\CekLogin::class,
+            'cek.login' => \App\Http\Middleware\CekLogin::class,
             'check.admin' => \App\Http\Middleware\CekSessionAdmin::class,
-            'check.pembeli' => \App\Http\Middleware\CekSessionPembeli::class,
+            'cek.pembeli' => \App\Http\Middleware\CekSessionPembeli::class,
         ]);
         
         // Atau bisa juga menggunakan cara ini:

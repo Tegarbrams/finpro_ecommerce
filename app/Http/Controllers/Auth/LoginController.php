@@ -47,7 +47,7 @@ class LoginController extends Controller
                 'email' => $user->email,
                 'role' => $user->role,
                 'level_user' => $user->role,  // Untuk kompatibilitas dengan middleware
-                'id_user' => $user->id,
+                'user_id' => $user->id,
                 'nama' => $user->name,
             ]);
 
