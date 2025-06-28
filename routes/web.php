@@ -93,3 +93,7 @@ Route::get('/listacc', function () {
 Route::get('/tambah', function () {
     return view('/Admin/tambah');
 });
+
+Route::get('/registerAdmin', function () {
+    return view('/Admin/registerAdmin');
+});
