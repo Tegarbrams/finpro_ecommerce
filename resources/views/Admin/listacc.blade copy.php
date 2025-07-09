@@ -17,31 +17,27 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('asset/img/apple-icon.png') }}') }}" />
-    <link rel="icon" type="image/png" href="{{ url('asset/img/favicon.png') }}') }}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="asset/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="asset/img/favicon.png" />
     <title>Soft UI Dashboard Tailwind</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Nucleo Icons -->
-    <link href="{{ url('asset/css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ url('asset/css/nucleo-svg.css') }}" rel="stylesheet" />
-    <!-- Popper -->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <link href="asset/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="asset/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Main Styling -->
-    <link href="{{ url('asset/css/soft-ui-dashboard-tailwind.css?v=1.0.5') }}" rel="stylesheet" />
-
-    <script src="{{ url('https://cdn.tailwindcss.com') }}"></script>
-    <link href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
-
-    <script src="{{ url('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
+    <link href="asset/css/soft-ui-dashboard-tailwind.css?v=1.0.5" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  </head>
+</head>
 
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-900 text-white">
 
@@ -51,7 +47,7 @@
             <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden"
                 sidenav-close></i>
             <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
-                <img src="{{ url('asset/img/logo-ct.png') }}"
+                <img src="asset/img/logo-ct.png"
                     class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8"
                     alt="main_logo" />
                 <span class="text-white text-[24px] font-semibold transition-all duration-200 ease-nav-brand">Tukang
@@ -65,7 +61,7 @@
             <ul class="flex flex-col pl-0 mb-0">
                 <li class="mt-1 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../admin/dashboard">
+                        href="../pages/dashboard.html">
 
                         <!-- Logo/Icon -->
                         <div
@@ -91,7 +87,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../admin/listacc">
+                        href="../pages/tables.html">
 
                         <div
                             class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.5">
@@ -121,7 +117,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../admin/tambah">
+                        href="../pages/billing.html">
                         <div
                             class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.5">
                             <svg width="18px" height="18px" viewBox="0 0 43 36" version="1.1"
@@ -623,14 +619,13 @@
         </div>
 </body>
 
-<!-- plugin for charts  -->
-  <script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
-  <!-- plugin for scrollbar  -->
-  <script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
-  <!-- github button -->
-  <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
-  <!-- main script file  -->
-  <script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
+
+<!-- plugin for scrollbar  -->
+<script src="asset/js/plugins/perfect-scrollbar.min.js" async></script>
+<!-- github button -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- main script file  -->
+<script src="asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5" async></script>
 
 <!-- Script -->
 <script>
