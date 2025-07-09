@@ -78,7 +78,7 @@
                                     </g>
                                 </g>
                             </svg>
-                        </div>
+                        </div>\
 
                         <!-- Label -->
                         <span class="text-white">Dashboard</span>

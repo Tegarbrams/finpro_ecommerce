@@ -69,7 +69,7 @@ Route::middleware(['cek.login'])->group(function () {
         
         // Admin Dashboard
         Route::get('/admin/dashboard', function () {
-            return view('admin.dashboardAdmin');
+            return view('admin.dash2');
         });
         
         // Alternative admin dashboard route (untuk kompatibilitas)
