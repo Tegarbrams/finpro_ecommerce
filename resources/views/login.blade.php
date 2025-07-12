@@ -47,8 +47,10 @@
                 <nav
                     class="absolute top-0 left-0 right-0 z-30 flex flex-wrap items-center px-4 py-2 mx-6 my-4 shadow-soft-2xl rounded-blur bg-gray-900 backdrop-blur-2xl backdrop-saturate-200 lg:flex-nowrap lg:justify-start">
                     <div class="flex items-center justify-between w-full p-0 pl-6 mx-auto flex-wrap-inherit">
-                        <a class="py-2.375 text-sm mr-4 ml-4 whitespace-nowrap font-bold text-white lg:ml-0"
-                            href="../pages/dashboard.html"> Tukang Akun Store </a>
+                        <div class="flex items-center space-x-2">
+                            <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-10 h-10 md:w-12 md:h-12">
+                              <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
+                        </div>
                         <button navbar-trigger
                             class="px-3 py-1 ml-2 leading-none transition-all bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg ease-soft-in-out lg:hidden"
                             type="button" aria-controls="navigation" aria-expanded="false"
@@ -67,28 +69,28 @@
                             class="items-center flex-grow overflow-hidden transition-all duration-500 ease-soft lg-max:max-h-0 basis-full lg:flex lg:basis-auto">
                             <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
                                 <li>
-                                    <a class="flex items-center px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2"
+                                    <a class="flex items-center px-4 py-2 mr-2 font-bold transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2 hover:text-blue-400"
                                         aria-current="page" href="../pages/dashboard.html">
                                         <i class="mr-1 fa fa-chart-pie opacity-60"></i>
                                         Dashboard
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2"
+                                    <a class="block px-4 py-2 mr-2 font-bold transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2 hover:text-blue-400"
                                         href="../pages/profile.html">
                                         <i class="mr-1 fa fa-user opacity-60"></i>
                                         Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2"
+                                    <a class="block px-4 py-2 mr-2 font-bold transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2 hover:text-blue-400"
                                         href="register">
                                         <i class="mr-1 fas fa-user-circle opacity-60"></i>
                                         Sign Up
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2"
+                                    <a class="block px-4 py-2 mr-2 font-bold transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white lg:px-2 hover:text-blue-400 "
                                         href="../pages/sign-in.html">
                                         <i class="mr-1 fas fa-key opacity-60"></i>
                                         Sign In
@@ -108,7 +110,7 @@
                                 <li>
                                     <a href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind"
                                         target="_blank"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-8 py-2 text-center align-middle font-bold uppercase text-white transition-all">
+                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-8 py-2 text-center align-middle font-bold uppercase text-white transition-all hover:text-blue-400">
                                         Instagram</a>
                                 </li>
                             </ul>

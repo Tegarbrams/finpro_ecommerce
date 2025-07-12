@@ -9,26 +9,38 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background-image: url('asset/background_3.png'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white">
-  <!-- Navbar -->
-  <nav class="bg-blue-900 p-4 sticky top-0 z-10 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-  <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-12 h-12">
-  <h1 class="text-2xl font-bold">Tukang Akun</h1>
-</div>
 
-      <ul class="flex space-x-6">
-        <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
-        <li><a href="#" class="hover:text-blue-400">Game</a></li>
-        <li><a href="#" class="hover:text-blue-400">Jual Akun</a></li>
-        <li><a href="#" class="hover:text-blue-400">Login</a></li>
-      </ul>
-    </div>
-  </nav>
+<body class="text-white">
+  <div class="bg-black bg-opacity-60 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-black-900 p-4 top-0 z-10 shadow-md">
+      <div class="container mx-auto">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-2">
+            <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-10 h-10 md:w-12 md:h-12">
+            <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
+          </div>
+          <ul class="hidden md:flex space-x-6 text-white">
+            <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
+            <li><a href="#" class="hover:text-blue-400">Game</a></li>
+            <li><a href="#" class="hover:text-blue-400">Jual Akun</a></li>
+            <li><a href="#" class="hover:text-blue-400">Login</a></li>
+          </ul>
+          <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+    </nav>
 
   <!-- Detail Akun MLBB -->
   <section class="container mx-auto px-4 py-10">
@@ -50,7 +62,7 @@
           <li><strong>Email:</strong> Bisa Diganti / Bindable</li>
         </ul>
 
-        <p class="text-2xl font-bold text-green-400 mb-4">Rp 1.250.000</p>
+        <p class="text-2xl font-bold text-green-400 mb-4">Rp 850.000</p>
 
         <button class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white font-semibold">Beli Sekarang</button>
       </div>
@@ -58,7 +70,7 @@
 
     <!-- Album Foto Akun -->
     <div class="mt-8">
-      <h3 class="text-2xl font-semibold mb-4">Galeri Akun</h3>
+      <h3 class="text-2xl font-semibold mb-4">Galeri Skin Akun</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <img src="asset/skin_1.png" alt="Skin 1" class="rounded-lg shadow-md">
         <img src="asset/skin_2.png" alt="Skin 2" class="rounded-lg shadow-md">
@@ -69,12 +81,12 @@
   </section>
 
   <!-- Footer -->
- <footer class="mt-20 bg-blue-900 text-center py-6">
-    <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
-    <div class="mt-2">
-      <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
-      <a href="#" class="text-gray-400 hover:text-white">Kontak</a>
-    </div>
-  </footer>
+ <footer class="mt-20 bg-black text-center py-6">
+      <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
+      <div class="mt-2">
+        <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
+        <a href="#" class="text-gray-400 hover:text-white">Kontak</a>
+      </div>
+    </footer>
 </body>
 </html>
