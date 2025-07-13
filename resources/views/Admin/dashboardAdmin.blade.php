@@ -327,7 +327,7 @@
                                 <span class="hidden sm:inline">Search</span>
                             </a>
                         </li>
-                        
+
 
                         <!-- notifications -->
 
@@ -386,13 +386,24 @@
                             <div class="flex flex-row -mx-3">
                                 <div class="flex-none w-2/3 max-w-full px-3">
                                     <div>
-                                        <p class="text-white mb-0 font-sans font-semibold leading-normal text-sm">
-                                            New User</p>
-                                        <h5 class="text-white mb-0 font-bold">
-                                            12
-                                            <span
-                                                class="leading-normal text-sm font-weight-bolder text-lime-500">+</span>
+                                        <!-- New User -->
+                                        <h5 class="font-weight-bolder mb-0">
+                                            {{ $newUser }}
+                                            <span class="text-success text-sm font-weight-bolder">+</span>
                                         </h5>
+
+                                        <!-- Penjualan Akun -->
+                                        <h5 class="font-weight-bolder mb-0">
+                                            {{ $totalPenjualan }}
+                                            <span class="text-success text-sm font-weight-bolder">+</span>
+                                        </h5>
+
+                                        <!-- Revenue -->
+                                        <h5 class="font-weight-bolder mb-0">
+                                            Rp {{ number_format($totalRevenue, 0, ',', '.') }}
+                                            <span class="text-success text-sm font-weight-bolder">+</span>
+                                        </h5>
+
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">

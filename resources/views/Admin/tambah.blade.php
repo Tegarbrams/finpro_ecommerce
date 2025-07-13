@@ -355,57 +355,53 @@
                         </div>
                         <div class="flex-auto px-0 pt-0 pb-2">
                             <div class="p-4">
-                                <form class="space-y-4">
+                                <form method="POST" action="{{ route('admin.produk.store') }}" enctype="multipart/form-data" class="space-y-4">
+                                    @csrf
+                                
                                     <!-- Pilihan Game -->
                                     <div>
-                                        <label for="game" class="block text-sm font-medium text-white">Pilih
-                                            Game</label>
-                                        <select id="game" name="game"
+                                        <label for="game_id" class="block text-sm font-medium text-white">Pilih Game</label>
+                                        <select id="game_id" name="game_id"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                             <option value="">-- Pilih Game --</option>
-                                            <option value="Mobile Legends">Mobile Legends</option>
-                                            <option value="Free Fire">Free Fire</option>
-                                            <option value="PUBG Mobile">PUBG Mobile</option>
-                                            <option value="Valorant">Valorant</option>
-                                            <option value="Genshin Impact">Genshin Impact</option>
+                                            @foreach($games as $game)
+                                                <option value="{{ $game->id }}">{{ $game->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+                                
                                     <!-- Nama Produk -->
                                     <div>
-                                        <label for="nama" class="block text-sm font-medium text-white">Nama
-                                            Produk</label>
-                                        <input type="text" id="nama" name="nama"
+                                        <label for="name" class="block text-sm font-medium text-white">Nama Produk</label>
+                                        <input type="text" id="name" name="name"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-
+                                
                                     <!-- Harga Produk -->
                                     <div>
-                                        <label for="harga" class="block text-sm font-medium text-white">Harga
-                                            Produk</label>
-                                        <input type="number" id="harga" name="harga"
+                                        <label for="price" class="block text-sm font-medium text-white">Harga Produk</label>
+                                        <input type="number" id="price" name="price"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-
+                                
                                     <!-- Deskripsi Produk -->
                                     <div>
-                                        <label for="deskripsi"
-                                            class="block text-sm font-medium text-white">Deskripsi</label>
-                                        <textarea id="deskripsi" name="deskripsi" rows="4"
+                                        <label for="description" class="block text-sm font-medium text-white">Deskripsi</label>
+                                        <textarea id="description" name="description" rows="4"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required></textarea>
                                     </div>
-
+                                
                                     <!-- Upload Gambar -->
                                     <div>
-                                        <label for="gambar" class="block text-sm font-medium text-white">Gambar
-                                            Produk</label>
-                                        <input type="file" id="gambar" name="gambar"
+                                        <label for="image" class="block text-sm font-medium text-white">Gambar Produk</label>
+                                        <input type="file" id="image" name="image"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     </div>
-
+                                
                                     <!-- Tombol Submit -->
                                     <div class="pt-4">
                                         <button type="submit"
@@ -414,6 +410,7 @@
                                         </button>
                                     </div>
                                 </form>
+                                
                             </div>
                         </div>
                     </div>

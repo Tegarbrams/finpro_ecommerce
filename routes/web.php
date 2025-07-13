@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\Admin\ProductController;
+
 
 // ===== PUBLIC ROUTES =====
 // Home routes
@@ -88,14 +90,18 @@ Route::middleware(['cek.login'])->group(function () {
             return view('Admin.listacc');
         });
         
-        Route::get('/admin/tambah', function () {
-            return view('Admin.tambah');
-        });
+        Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
+        Route::post('/admin/tambah', [ProductController::class, 'store'])->name('admin.produk.store');
+    
         
         Route::get('/admin/register', function () {
             return view('Admin.registerAdmin');
         });
         
+        // controller untuk tambah
+        // Route::get('/tambah-produk', [ControllersProductController::class, 'create'])->name('products.create');
+        // Route::post('/tambah-produk', [ControllersProductController::class, 'store'])->name('products.store');
+
         // User Management Routes (Admin only)
         Route::prefix('admin/user')->group(function () {
             Route::get('/list', [PenggunaController::class, 'list_data'])->name('admin.user.list');
