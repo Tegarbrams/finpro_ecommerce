@@ -30,7 +30,10 @@
         <div class="flex justify-between items-center">
           <div class="flex items-center space-x-2">
             <img src="asset/logo.png" alt="Logo Tukang Akun" class="w-10 h-10 md:w-12 md:h-12">
-            <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
+            <a href="profil" class="block">
+  <h1 class="text-xl md:text-2xl font-bold text-white hover:underline">Tukang Akun</h1>
+</a>
+
           </div>
           <ul class="hidden md:flex space-x-6 text-white">
             <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
@@ -184,16 +187,6 @@
       
     </div>
   </section>
-    <!-- Footer -->
-    <footer class="mt-20 bg-black text-center py-6">
-      <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
-      <div class="mt-2">
-        <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
-        <a href="#" class="text-gray-400 hover:text-white">Kontak</a>
-      </div>
-    </footer>
-  </div>
-
   <script>
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -211,5 +204,13 @@
       }
     });
   </script>
+   <!-- Footer -->
+ <footer class="mt-20 bg-black text-center py-6">
+      <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
+      <div class="mt-2">
+        <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
+        <a href="#" class="text-gray-400 hover:text-white">Kontak</a>
+      </div>
+    </footer>
 </body>
 </html>

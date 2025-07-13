@@ -64,7 +64,10 @@
 
         <p class="text-2xl font-bold text-green-400 mb-4">Rp 850.000</p>
 
-        <button class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white font-semibold">Beli Sekarang</button>
+       <a href="pembayaran" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white font-semibold inline-block">
+  Beli Sekarang
+</a>
+
       </div>
     </div>
 

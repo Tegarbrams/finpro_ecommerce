@@ -37,6 +37,12 @@ Route::get('/jual', function () {
 Route::get('/testes', function () {
     return view('testes');
 });
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
+});
+Route::get('/profil', function () {
+    return view('profil');
+});
 
 // ===== AUTHENTICATION ROUTES (PUBLIC) =====
 Route::get('/login', [LoginController::class, 'create'])->name('login');
