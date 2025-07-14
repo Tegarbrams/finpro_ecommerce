@@ -9,6 +9,23 @@ use App\Models\Game;
 
 class ProductController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $selectedGame = $request->query('game', 'all');
+        $games = \App\Models\Game::all();
+    
+        $products = \App\Models\Product::with('game')
+            ->when($selectedGame != 'all', function ($query) use ($selectedGame) {
+                $query->whereHas('game', function ($q) use ($selectedGame) {
+                    $q->where('name', $selectedGame); // <- Sesuaikan nama kolom
+                });
+            })
+            ->get();
+    
+        return view('Admin.listacc', compact('products', 'games', 'selectedGame'));
+    }
+
     public function create()
     {
         $games = \App\Models\Game::all();

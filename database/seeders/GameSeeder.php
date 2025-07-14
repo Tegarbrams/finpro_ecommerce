@@ -9,7 +9,7 @@ class GameSeeder extends Seeder
 {
     public function run(): void
     {
-        $games = ['Mobile Legends', 'PUBG Mobile', 'Free Fire'];
+        $games = ['Mobile Legends', 'PUBG', 'Free Fire'];
 
         foreach ($games as $game) {
             Game::create(['name' => $game]);

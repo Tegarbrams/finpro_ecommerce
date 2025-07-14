@@ -416,16 +416,26 @@
                         <!-- Dropdown Pilih Game -->
                         <!-- Dropdown Pilih Game -->
                         <div class="mt-4">
-                            <label for="filterGame" class="block mb-2 text-sm font-medium text-white">Pilih
-                                Game:</label>
-                            <select id="filterGame" onchange="filterProduk()"
-                                class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-                                <option value="all">Semua Game</option>
-                                <option value="Mobile Legends">Mobile Legends</option>
-                                <option value="PUBG">PUBG</option>
-                                <option value="Free Fire">Free Fire</option>
+                            <label for="filterGame" class="block mb-2 text-sm font-medium text-white">Pilih Game:</label>
+                            <select id="filterGame"
+                                    class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+                                <option value="all" {{ $selectedGame == 'all' ? 'selected' : '' }}>Semua Game</option>
+                                @foreach ($games as $game)
+                                    <option value="{{ $game->name }}" {{ $selectedGame == $game->name ? 'selected' : '' }}>
+                                        {{ $game->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
+                        
+
+                        <script>
+                            document.getElementById('filterGame').addEventListener('change', function () {
+                                const selectedGame = this.value;
+                                window.location.href = `{{ url('/admin/listacc') }}?game=${encodeURIComponent(selectedGame)}`;
+                            });
+                        </script>
+                        
 
                     </div>
 
@@ -438,38 +448,41 @@
                                     <th class="px-4 py-2 border-b border-gray-700">Deskripsi</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Harga</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Gambar</th>
+                                    <th class="px-4 py-2 border-b border-gray-700">Game</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody id="produkBody" class="bg-gray-800">
-                                <tr data-game="Mobile Legends">
-                                    <td class="px-4 py-2 border-b border-gray-700">1</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Akun ML Epic</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Level tinggi, banyak skin.</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rp150.000</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">ml_epic.jpg</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">
-                                        <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
-                                            onclick="openModal(this)">Edit</button>
-                                        <button
-                                            class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr data-game="PUBG">
-                                    <td class="px-4 py-2 border-b border-gray-700">2</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Akun PUBG Platinum</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rank Platinum.</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rp200.000</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">pubg_plat.png</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">
-                                        <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
-                                            onclick="openModal(this)">Edit</button>
-                                        <button
-                                            class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
-                                    </td>
-                                </tr>
+                                @forelse ($products as $produk)
+                                    <tr data-game="{{ $produk->game->name ?? '-' }}">
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $produk->id }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $produk->name }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $produk->description }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">Rp{{ number_format($produk->price, 0, ',', '.') }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            @if ($produk->image)
+                                                <img src="{{ asset($produk->image) }}" alt="gambar" class="w-20 h-20 object-cover rounded">
+                                            @else
+                                                <span class="text-sm italic text-gray-400">Tidak ada gambar</span>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $produk->game->name ?? '-' }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
+                                                    onclick="openModal(this)">Edit</button>
+                                            <button class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="7" class="px-4 py-2 text-center text-white border-b border-gray-700">
+                                            Tidak ada produk.
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
+                        
 
                     </div>
                 </div>

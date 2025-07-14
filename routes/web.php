@@ -57,47 +57,47 @@ Route::post('/register', [PenggunaController::class, 'store']);
 
 // ===== PROTECTED ROUTES (PERLU LOGIN) =====
 Route::middleware(['cek.login'])->group(function () {
-    
+
     // Dashboard routes
     Route::get('/dashboard', function () {
         // Cek role untuk redirect yang tepat
         if (session('role') === 'admin') {
             return redirect('/admin/dashboard');
         }
-        return view('dashboard');
+        return view('index');
     });
-    
+
     // User routes (untuk user biasa)
     Route::get('/tambah', function () {
         return view('tambah');
     });
-    
+
     // ===== ADMIN ROUTES =====
     Route::middleware(['check.admin'])->group(function () {
-        
+
         // Admin Dashboard
         Route::get('/admin/dashboard', function () {
             return view('admin.dash2');
         });
-        
+
         // Alternative admin dashboard route (untuk kompatibilitas)
         Route::get('/dashboardAdmin', function () {
-            return view('Admin.dashboardAdmin');
+            return view('Admin.dash2');
         });
-        
+
         // Admin pages
-        Route::get('/admin/listacc', function () {
-            return view('Admin.listacc');
-        });
-        
+        //(menggunakan controller untuk ambil data dari database)
+        Route::get('/admin/listacc', [ProductController::class, 'index'])->name('admin.produk.index');
+
+
         Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
         Route::post('/admin/tambah', [ProductController::class, 'store'])->name('admin.produk.store');
-    
-        
+
+
         Route::get('/admin/register', function () {
             return view('Admin.registerAdmin');
         });
-        
+
         // controller untuk tambah
         // Route::get('/tambah-produk', [ControllersProductController::class, 'create'])->name('products.create');
         // Route::post('/tambah-produk', [ControllersProductController::class, 'store'])->name('products.store');
@@ -114,7 +114,6 @@ Route::middleware(['cek.login'])->group(function () {
             Route::get('/profile/{id}', [PenggunaController::class, 'profile'])->name('admin.user.profile');
             Route::post('/update-login/{id}', [PenggunaController::class, 'updateLastLogin'])->name('admin.user.update-login');
         });
-        
     });
 });
 
