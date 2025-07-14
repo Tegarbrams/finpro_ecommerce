@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('asset/background_2.png'); 
+      background-image: url('asset/background/background_2.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -29,10 +29,10 @@
             <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
           </div>
           <ul class="hidden md:flex space-x-6 text-white">
-            <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
+            <li><a href="index" class="hover:text-blue-400">Beranda</a></li>
             <li><a href="#" class="hover:text-blue-400">Game</a></li>
             <li><a href="#" class="hover:text-blue-400">Jual Akun</a></li>
-            <li><a href="#" class="hover:text-blue-400">Login</a></li>
+            <li><a href="login" class="hover:text-blue-400">Login</a></li>
           </ul>
           <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('asset/background_1.png'); 
+      background-image: url('asset/background/background_1.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -56,16 +56,16 @@
       <div id="default-carousel" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
         <div class="relative h-[400px] md:h-[500px] overflow-hidden rounded-lg">
           <div class="duration-700 ease-in-out" data-carousel-item="active">
-            <img src="asset/caraus_1.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
+            <img src="asset/caraousel/caraus_1.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game ML">
           </div>
           <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="asset/caraus_2.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game PUBG">
+            <img src="asset/caraousel/caraus_2.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game PUBG">
           </div>
           <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="asset/caraus_3.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game FF">
+            <img src="asset/caraousel/caraus_3.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game FF">
           </div>
           <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="asset/caraus_4.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game Valo">
+            <img src="asset/caraousel/caraus_4.png" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game Valo">
           </div>
         </div>
         <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
@@ -96,19 +96,19 @@
       <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white">Game Terpopuler</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         <a href="dataListAkun" class="group">
-          <img src="asset/image-1.png" alt="MLBB" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
+          <img src="asset/img/image-1.png" alt="MLBB" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
           <p class="text-white mt-2 group-hover:text-blue-400">Mobile Legends</p>
         </a>
         <a href="dataListAkun" class="group">
-          <img src="asset/image-2.png" alt="Valorant" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
+          <img src="asset/img/image-2.png" alt="Valorant" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
           <p class="text-white mt-2 group-hover:text-blue-400">Valorant</p>
         </a>
         <a href="dataListAkun" class="group">
-          <img src="asset/image-3.png" alt="PUBG" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
+          <img src="asset/img/image-3.png" alt="PUBG" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
           <p class="text-white mt-2 group-hover:text-blue-400">PUBG</p>
         </a>
         <a href="dataListAkun" class="group">
-          <img src="asset/image-4.png" alt="Free Fire" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
+          <img src="asset/img/image-4.png" alt="Free Fire" class="w-full h-32 md:h-40 object-cover rounded-md hover:scale-105 transition-all duration-300">
           <p class="text-white mt-2 group-hover:text-blue-400">Free Fire</p>
         </a>
       </div>
