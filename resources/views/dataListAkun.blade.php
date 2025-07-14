@@ -59,9 +59,6 @@
           <span class="inline-block text-xs bg-blue-600 px-2 py-1 rounded-full mb-2">MLBB</span>
           <h3 class="font-bold text-lg">Akun Mobile Legends - Mythic</h3>
           <p class="text-sm text-gray-400 mb-1">Hero lengkap + 100 Skin Epic</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(48 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 850.000</span>
             <a href="detailProduk" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -76,9 +73,6 @@
           <span class="inline-block text-xs bg-purple-600 px-2 py-1 rounded-full mb-2">Valorant</span>
           <h3 class="font-bold text-lg">Akun Valorant - Diamond</h3>
           <p class="text-sm text-gray-400 mb-1">Reaver + Prime bundle aktif</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐⭐ <span class="text-gray-400 ml-2">(72 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 750.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -93,9 +87,6 @@
           <span class="inline-block text-xs bg-yellow-600 px-2 py-1 rounded-full mb-2">PUBG</span>
           <h3 class="font-bold text-lg">PUBG Mobile - Max Outfit</h3>
           <p class="text-sm text-gray-400 mb-1">Outfit Mythic + Skin senjata</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(61 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 690.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -110,9 +101,6 @@
           <span class="inline-block text-xs bg-green-600 px-2 py-1 rounded-full mb-2">Free fire</span>
           <h3 class="font-bold text-lg">Garena Free Fire - Full Skin</h3>
           <p class="text-sm text-gray-400 mb-1">Elite Master + Full Bandle</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(47 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 350.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -126,9 +114,6 @@
           <span class="inline-block text-xs bg-blue-600 px-2 py-1 rounded-full mb-2">MLBB</span>
           <h3 class="font-bold text-lg">Akun Mobile Legends - Mythic</h3>
           <p class="text-sm text-gray-400 mb-1">Hero lengkap + 100 Skin Epic</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(48 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 850.000</span>
             <a href="detailProduk" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -143,9 +128,6 @@
           <span class="inline-block text-xs bg-purple-600 px-2 py-1 rounded-full mb-2">Valorant</span>
           <h3 class="font-bold text-lg">Akun Valorant - Diamond</h3>
           <p class="text-sm text-gray-400 mb-1">Reaver + Prime bundle aktif</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐⭐ <span class="text-gray-400 ml-2">(72 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 750.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -160,9 +142,6 @@
           <span class="inline-block text-xs bg-yellow-600 px-2 py-1 rounded-full mb-2">PUBG</span>
           <h3 class="font-bold text-lg">PUBG Mobile - Max Outfit</h3>
           <p class="text-sm text-gray-400 mb-1">Outfit Mythic + Skin senjata</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(61 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 690.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
@@ -177,9 +156,6 @@
           <span class="inline-block text-xs bg-green-600 px-2 py-1 rounded-full mb-2">Free fire</span>
           <h3 class="font-bold text-lg">Garena Free Fire - Full Skin</h3>
           <p class="text-sm text-gray-400 mb-1">Elite Master + Full Bandle</p>
-          <div class="flex items-center text-yellow-400 text-sm mb-2">
-            ⭐⭐⭐⭐☆ <span class="text-gray-400 ml-2">(47 ulasan)</span>
-          </div>
           <div class="flex justify-between items-center">
             <span class="text-green-400 font-bold">Rp 350.000</span>
             <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>

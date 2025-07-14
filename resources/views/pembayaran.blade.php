@@ -28,10 +28,10 @@
             <h1 class="text-xl md:text-2xl font-bold text-white">Tukang Akun</h1>
           </div>
           <ul class="hidden md:flex space-x-6 text-white">
-            <li><a href="#" class="hover:text-blue-400">Beranda</a></li>
+            <li><a href="index" class="hover:text-blue-400">Beranda</a></li>
             <li><a href="#" class="hover:text-blue-400">Game</a></li>
             <li><a href="#" class="hover:text-blue-400">Jual Akun</a></li>
-            <li><a href="#" class="hover:text-blue-400">Login</a></li>
+            <li><a href="login" class="hover:text-blue-400">Login</a></li>
           </ul>
           <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,8 +40,8 @@
           </button>
         </div>
     </nav>
-<body class="bg-gray-100">
 
+<body class="bg-gray-100">
   <div class="min-h-screen flex items-center justify-center py-8">
     <div class="max-w-lg w-full bg-white p-6 rounded-2xl shadow-md space-y-6">
       <h2 class="text-2xl font-bold text-gray-800 text-center">Pembayaran via QRIS</h2>
@@ -63,17 +63,29 @@
           <p class="text-2xl font-bold text-green-600">Rp 850.000</p>
         </div>
 
-        <!-- Nama Penerima -->
-        <div class="text-center text-sm text-gray-500">
-          Atas Nama: <span class="font-medium text-gray-800">GameStore.ID</span>
-        </div>
-      </div>
-
-      <!-- Form Upload Bukti -->
-      <!-- ...HTML HEAD DAN BODY SEBELUMNYA TETAP SAMA... -->
-
-<!-- Form Upload Bukti -->
 <form class="space-y-4" onsubmit="handleSubmit(event)">
+  <!-- Input Nama -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-700">Nama</label>
+    <input type="text" name="nama" required
+           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
+  </div>
+
+  <!-- Input Email -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-700">Email</label>
+    <input type="email" name="email" required
+           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
+  </div>
+
+  <!-- Input Nomor HP -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-700">Nomor HP</label>
+    <input type="tel" name="nomor_hp" required
+           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
+  </div>
+
+  <!-- Upload Bukti Pembayaran -->
   <div>
     <label class="block mb-1 font-medium text-gray-700">Upload Bukti Pembayaran</label>
     <input type="file" accept="image/*" required
@@ -86,7 +98,8 @@
   </button>
 </form>
 
-<!-- ✅ POP-UP MODAL SUKSES -->
+
+<!-- POP-UP MODAL SUKSES -->
 <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
   <div class="bg-white rounded-lg p-6 max-w-sm w-full text-center">
     <h2 class="text-xl font-bold text-green-600 mb-4">Pembayaran Berhasil!</h2>
