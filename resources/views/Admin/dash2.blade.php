@@ -149,7 +149,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../admin/tambah.html">
+                        href="../admin/bayar">
                         <div
                             class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.5">
                             <svg width="18px" height="18px" viewBox="0 0 42 42" version="1.1"
@@ -175,13 +175,13 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="text-white">Stream Revenue</span>
+                        <span class="text-white">Pembayaran</span>
                     </a>
                 </li>
 
                 <li class="mt-0.5 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../pages/rtl.html">
+                        href="../admin/bayar">
                         <div
                             class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.5">
                             <svg width="18px" height="18px" viewBox="0 0 40 40" version="1.1"

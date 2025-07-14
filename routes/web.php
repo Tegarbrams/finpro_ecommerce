@@ -89,6 +89,11 @@ Route::middleware(['cek.login'])->group(function () {
         Route::get('/admin/listacc', function () {
             return view('Admin.listacc');
         });
+
+        // Admin pages
+        Route::get('/admin/bayar', function () {
+            return view('Admin.bayar');
+        });
         
         Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
         Route::post('/admin/tambah', [ProductController::class, 'store'])->name('admin.produk.store');

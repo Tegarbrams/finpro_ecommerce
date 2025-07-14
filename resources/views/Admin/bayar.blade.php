@@ -13,7 +13,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -34,17 +34,19 @@
     <link href="{{ url('asset/css/soft-ui-dashboard-tailwind.css?v=1.0.5') }}" rel="stylesheet" />
 
     <script src="{{ url('https://cdn.tailwindcss.com') }}"></script>
-    <link href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
+    <link
+        href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
 
     <script src="{{ url('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
+
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  </head>
+</head>
 
-<body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-900 text-white">
-
+<body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-900 text-slate-500">
+    <!-- sidenav  -->
     <aside
         class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-gray-600 p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
         <div class="h-19.5">
@@ -150,7 +152,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class="py-3 px-4 text-[19px] font-semibold my-0 mx-4 flex items-center whitespace-nowrap rounded-lg text-white"
-                        href="../admin/bayar">
+                        href="../admin/tambah.html">
                         <div
                             class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.5">
                             <svg width="18px" height="18px" viewBox="0 0 42 42" version="1.1"
@@ -289,6 +291,8 @@
 
     </aside>
 
+    <!-- end sidenav -->
+
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
         <!-- Navbar -->
         <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
@@ -297,13 +301,13 @@
                 <nav>
                     <!-- breadcrumb -->
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
-                        <li class="text-sm leading-normal">
-                            <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
+                        <li class="leading-normal text-sm">
+                            <a class="opacity-50 text-white" href="javascript:;">Pages</a>
                         </li>
-                        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
-                            aria-current="page">List</li>
+                        <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                            aria-current="page">Dashboard</li>
                     </ol>
-                    <h6 class="mb-0 font-bold capitalize">List Produk</h6>
+                    <h6 class="text-white mb-0 font-bold capitalize">Transaksi Pembayaran</h6>
                 </nav>
 
                 <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -311,7 +315,7 @@
                         <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
                             <span
                                 class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <i class="fas fa-search"></i>
                             </span>
                             <input type="text"
                                 class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
@@ -319,354 +323,404 @@
                         </div>
                     </div>
                     <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                        <!-- online builder btn  -->
-                        <!-- <li class="flex items-center">
-                <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
-              </li> -->
                         <li class="flex items-center">
                             <a href="../pages/sign-in.html"
-                                class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
-                                <i class="fa fa-user sm:mr-1" aria-hidden="true"></i>
+                                class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                                <i class="fa fa-user sm:mr-1"></i>
                                 <span class="hidden sm:inline">Search</span>
                             </a>
                         </li>
-                        <li class="flex items-center px-4">
-                            <a href="javascript:;" class="p-0 text-sm transition-all ease-nav-brand text-slate-500">
-                                <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
-                                <!-- fixed-plugin-button-nav  -->
-                            </a>
-                        </li>
+
+
                         <!-- notifications -->
+
                         <li class="relative flex items-center pr-2">
                             <p class="hidden transform-dropdown-show"></p>
                             <a href="javascript:;"
-                                class="block p-0 text-sm transition-all ease-nav-brand text-slate-500" dropdown-trigger
+                                class="block p-0 transition-all text-sm ease-nav-brand text-slate-500" dropdown-trigger
                                 aria-expanded="false">
-                                <i class="cursor-pointer fa fa-bell" aria-hidden="true"></i>
+                                <i class="cursor-pointer fa fa-bell"></i>
                             </a>
-
-
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- Modal Edit -->
-        <div id="editModal"
-            class="fixed inset-0 z-50 items-center justify-center hidden overflow-auto bg-black bg-opacity-50">
-            <div
-                class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
-                <h2 class="text-xl font-bold mb-4 text-white">Edit Produk</h2>
-                <form id="editForm">
-                    <input type="hidden" id="editId">
+        <!-- end Navbar -->
 
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Nama Produk</label>
-                        <input type="text" id="editNama"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500" />
-                    </div>
+        <!-- cards -->
+        <div class="w-full px-6 py-6 mx-auto">
+            <!-- row 1 -->
 
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Deskripsi</label>
-                        <textarea id="editDeskripsi"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500"></textarea>
-                    </div>
+            <div class="flex flex-wrap -mx-3">
+                <div class="flex-none w-full max-w-full px-3">
+                    <div
+                        class="relative flex flex-col min-w-0 mb-6 break-words bg-gray-800 border-0 border-transparent shadow-soft-xl rounded-2xl bg-clip-border">
 
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Harga</label>
-                        <input type="text" id="editHarga"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500" />
-                    </div>
+                        <!-- Header -->
+                        <div class="p-6 pb-0 mb-0 bg-gray-800 border-b-0 rounded-t-2xl">
+                            <h6 class="text-lg font-semibold text-white">List Pembayaran</h6>
 
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Gambar Produk</label>
-
-                        <!-- Preview Gambar -->
-                        <div class="mb-2">
-                            <img id="editPreview" src="" alt="Preview Gambar"
-                                class="w-32 h-32 object-cover rounded border border-slate-600" />
+                            <!-- Filter Status -->
+                            <div class="mt-4">
+                                <label for="filterStatus" class="block mb-2 text-sm font-medium text-white">Filter
+                                    Status:</label>
+                                <select id="filterStatus" onchange="filterPembayaran()"
+                                    class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+                                    <option value="all">Semua</option>
+                                    <option value="success">Sukses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="failed">Gagal</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <!-- Input Gambar Baru -->
-                        <input type="file" id="editGambar"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white file:bg-gray-600 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:cursor-pointer"
-                            onchange="previewGambar(event)" />
-                    </div>
-
-                    <div class="flex justify-end gap-2">
-                        <button type="button" onclick="closeModal()"
-                            class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500">Batal</button>
-                        <button type="submit"
-                            class="px-4 py-2 bg-lime-500 text-white font-semibold rounded hover:bg-lime-400">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        <!-- Tabel Produk -->
-        <div class="flex flex-wrap -mx-3">
-            <div class="flex-none w-full max-w-full px-3">
-                <div
-                    class="relative flex flex-col min-w-0 mb-6 break-words bg-gray-800 border-0 border-transparent shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-6 pb-0 mb-0 bg-gray-800 border-b-0 rounded-t-2xl">
-                        <h6 class="text-lg font-semibold text-white">List Produk</h6>
-
-                        <!-- Dropdown Pilih Game -->
-                        <!-- Dropdown Pilih Game -->
-                        <div class="mt-4">
-                            <label for="filterGame" class="block mb-2 text-sm font-medium text-white">Pilih
-                                Game:</label>
-                            <select id="filterGame" onchange="filterProduk()"
-                                class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-                                <option value="all">Semua Game</option>
-                                <option value="Mobile Legends">Mobile Legends</option>
-                                <option value="PUBG">PUBG</option>
-                                <option value="Free Fire">Free Fire</option>
-                            </select>
+                        <!-- Tabel Pembayaran -->
+                        <div class="p-6 overflow-x-auto">
+                            <table class="w-full text-left text-white border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-700">
+                                        <th class="px-4 py-2 border-b border-gray-700">ID</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Nama Pembeli</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Metode</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Jumlah</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Tanggal</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Status</th>
+                                        <th class="px-4 py-2 border-b border-gray-700">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pembayaranBody" class="bg-gray-800 text-sm">
+                                    <tr data-status="pending">
+                                        <td class="px-4 py-2 border-b border-gray-700">INV001</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">Maulana</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">QRis</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">Rp150.000</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">2025-07-14</td>
+                                        <td class="px-4 py-2 border-b border-gray-700 text-yellow-400 font-semibold">
+                                            Pending</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            <button onclick="openModal(this)"
+                                                class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600">Aksi</button>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="success">
+                                        <td class="px-4 py-2 border-b border-gray-700">INV002</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">Dina</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">QRis</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">Rp250.000</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">2025-07-10</td>
+                                        <td class="px-4 py-2 border-b border-gray-700 text-green-400 font-semibold">
+                                            Sukses</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            <button onclick="openModal(this)"
+                                                class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600">Aksi</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
-                    </div>
-
-                    <div class="p-6 overflow-x-auto">
-                        <table class="w-full text-left text-white border-collapse">
-                            <thead>
-                                <tr class="bg-gray-700">
-                                    <th class="px-4 py-2 border-b border-gray-700">ID</th>
-                                    <th class="px-4 py-2 border-b border-gray-700">Nama Produk</th>
-                                    <th class="px-4 py-2 border-b border-gray-700">Deskripsi</th>
-                                    <th class="px-4 py-2 border-b border-gray-700">Harga</th>
-                                    <th class="px-4 py-2 border-b border-gray-700">Gambar</th>
-                                    <th class="px-4 py-2 border-b border-gray-700">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="produkBody" class="bg-gray-800">
-                                <tr data-game="Mobile Legends">
-                                    <td class="px-4 py-2 border-b border-gray-700">1</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Akun ML Epic</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Level tinggi, banyak skin.</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rp150.000</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">ml_epic.jpg</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">
-                                        <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
-                                            onclick="openModal(this)">Edit</button>
-                                        <button
-                                            class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr data-game="PUBG">
-                                    <td class="px-4 py-2 border-b border-gray-700">2</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Akun PUBG Platinum</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rank Platinum.</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">Rp200.000</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">pubg_plat.png</td>
-                                    <td class="px-4 py-2 border-b border-gray-700">
-                                        <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
-                                            onclick="openModal(this)">Edit</button>
-                                        <button
-                                            class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
                     </div>
                 </div>
             </div>
-        </div>
-        <footer class="pt-4">
-            <div class="w-full px-6 mx-auto">
-                <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-                    <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                        <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear() + ",");
-                            </script>
-                            made with <i class="fa fa-heart"></i> by
-                            IT Division TA Store.
+
+            <!-- MODAL -->
+            <div id="modal"
+                class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+                <div class="bg-gray-800 text-white p-6 rounded-2xl w-full max-w-lg shadow-2xl animate-fadeIn">
+
+                    <!-- Header -->
+                    <div class="mb-6 border-b pb-4 flex items-center space-x-3">
+                        <h3 class="text-xl font-semibold text-white">Pembayaran Akun</h3>
+                    </div>
+
+                    <!-- Preview Bukti -->
+                    <div
+                        class="w-full h-64 bg-gray-900 border border-gray-700 rounded-lg mb-4 flex items-center justify-center shadow-inner relative overflow-hidden">
+                        <span id="previewText" class="text-gray-500 text-sm absolute">Belum ada gambar</span>
+                        <img id="previewImage" src="" alt="Preview" class="hidden h-full object-contain" />
+                    </div>
+
+                    <!-- Upload Tombol -->
+                    <label
+                        class="w-full bg-lime-600 hover:bg-lime-700 transition px-4 py-3 rounded-lg text-white font-medium text-center cursor-pointer block mb-6">
+                        <i class="mr-2 fa fa-upload"></i> Upload Bukti Pembayaran
+                        <input type="file" id="buktiInput" class="hidden" accept="image/*"
+                            onchange="previewBukti()" />
+                    </label>
+
+                    <!-- Status Section -->
+                    <div class="mb-2 text-sm font-semibold text-gray-300 text-center tracking-wide uppercase">Status
+                        Pembayaran</div>
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <!-- Sukses -->
+                        <div onclick="selectStatusCircle('success')"
+                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-green-600 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
+                            <div id="circle-success" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
+                            <span class="text-sm text-white">Sukses</span>
+                        </div>
+
+                        <!-- Pending -->
+                        <div onclick="selectStatusCircle('pending')"
+                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-yellow-500 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
+                            <div id="circle-pending" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
+                            <span class="text-sm text-white">Pending</span>
+                        </div>
+
+                        <!-- Gagal -->
+                        <div onclick="selectStatusCircle('failed')"
+                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-red-500 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
+                            <div id="circle-failed" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
+                            <span class="text-sm text-white">Gagal</span>
                         </div>
                     </div>
-                    <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                        <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Company</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://creative-tim.com/blog"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Team</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license"
-                                    class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Products</a>
-                            </li>
-                        </ul>
+                    <input type="hidden" id="statusSelect" value="pending" />
+
+
+                    <!-- Footer -->
+                    <div class="pt-4 border-t border-gray-700 flex justify-end space-x-2">
+                        <button onclick="closeModal()"
+                            class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-white">Batal</button>
+                        <button onclick="submitModal()"
+                            class="px-4 py-2 bg-lime-600 hover:bg-lime-700 rounded-lg text-white font-semibold">Simpan</button>
                     </div>
                 </div>
             </div>
-        </footer>
-        <div fixed-plugin>
-            <a fixed-plugin-button
-                class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
-                <i class="py-2 pointer-events-none fa fa-cog"> </i>
-            </a>
-            <!-- -right-90 in loc de 0-->
-            <div fixed-plugin-card
-                class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 bg-white bg-clip-border px-2.5 duration-200">
-                <div class="px-6 pt-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                    <div class="float-left">
-                        <h5 class="mt-4 mb-0">Soft UI Configurator</h5>
-                        <p>See our dashboard options.</p>
+
+
+
+
+
+
+
+            {{-- Footer --}}
+
+            <footer class="pt-4">
+                <div class="w-full px-6 mx-auto">
+                    <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
+                        <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
+                            <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear() + ",");
+                                </script>
+                                made with <i class="fa fa-heart"></i> by
+                                IT Division TA Store.
+                            </div>
+                        </div>
+                        <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
+                            <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Company</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/presentation"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://creative-tim.com/blog"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/license"
+                                        class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Products</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="float-right mt-6">
-                        <button fixed-plugin-close-button
-                            class="inline-block p-0 mb-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer hover:scale-102 leading-pro ease-soft-in tracking-tight-soft bg-150 bg-x-25 active:opacity-85 text-slate-700">
-                            <i class="fa fa-close"></i>
-                        </button>
+                </div>
+            </footer>
+        </div>
+        <!-- end cards -->
+    </main>
+
+    <div fixed-plugin>
+        <a fixed-plugin-button
+            class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
+            <i class="py-2 pointer-events-none fa fa-cog"> </i>
+        </a>
+        <!-- -right-90 in loc de 0-->
+        <div fixed-plugin-card
+            class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 bg-white bg-clip-border px-2.5 duration-200">
+            <div class="px-6 pt-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                <div class="float-left">
+                    <h5 class="mt-4 mb-0">Soft UI Configurator</h5>
+                    <p>See our dashboard options.</p>
+                </div>
+                <div class="float-right mt-6">
+                    <button fixed-plugin-close-button
+                        class="inline-block p-0 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer hover:scale-102 leading-pro text-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 active:opacity-85 text-slate-700">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="h-px mx-0 my-1 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+            <div class="flex-auto p-6 pt-0 sm:pt-4">
+                <!-- Sidebar Backgrounds -->
+                <div>
+                    <h6 class="mb-0">Sidebar Colors</h6>
+                </div>
+                <a href="javascript:void(0)">
+                    <div class="my-2 text-left" sidenav-colors>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-purple-700 to-pink-500 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-slate-700 text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            active-color data-color-from="purple-700" data-color-to="pink-500"
+                            onclick="sidebarColor(this)"></span>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-gray-900 to-slate-800 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            data-color-from="gray-900" data-color-to="slate-800" onclick="sidebarColor(this)"></span>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-blue-600 to-cyan-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            data-color-from="blue-600" data-color-to="cyan-400" onclick="sidebarColor(this)"></span>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-green-600 to-lime-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            data-color-from="green-600" data-color-to="lime-400" onclick="sidebarColor(this)"></span>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-red-500 to-yellow-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            data-color-from="red-500" data-color-to="yellow-400" onclick="sidebarColor(this)"></span>
+                        <span
+                            class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-red-600 to-rose-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
+                            data-color-from="red-600" data-color-to="rose-400" onclick="sidebarColor(this)"></span>
                     </div>
-                    <!-- End Toggle Button -->
+                </a>
+                <!-- Sidenav Type -->
+                <div class="mt-4">
+                    <h6 class="mb-0">Sidenav Type</h6>
+                    <p class="leading-normal text-sm">Choose between 2 different sidenav types.</p>
+                </div>
+                <div class="flex">
+                    <button transparent-style-btn
+                        class="inline-block w-full px-4 py-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all border border-transparent border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-to-tl xl-max:from-purple-700 xl-max:to-pink-500 xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-purple-700 to-pink-500 bg-fuchsia-500 hover:border-fuchsia-500"
+                        data-class="bg-transparent" active-style>Transparent</button>
+                    <button white-style-btn
+                        class="inline-block w-full px-4 py-3 mb-2 ml-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-to-tl xl-max:from-purple-700 xl-max:to-pink-500 xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 border-fuchsia-500 bg-none text-fuchsia-500 hover:border-fuchsia-500"
+                        data-class="bg-white">White</button>
+                </div>
+                <p class="block mt-2 leading-normal text-sm xl:hidden">You can change the sidenav type just on desktop
+                    view.</p>
+                <!-- Navbar Fixed -->
+                <div class="mt-4">
+                    <h6 class="mb-0">Navbar Fixed</h6>
+                </div>
+                <div class="min-h-6 mb-0.5 block pl-0">
+                    <input navbarFixed
+                        class="rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5 relative float-left mt-1 ml-auto w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
+                        type="checkbox" />
                 </div>
                 <hr
-                    class="h-px mx-0 my-1 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                <div class="flex-auto p-6 pt-0 sm:pt-4">
-                    <!-- Sidebar Backgrounds -->
-                    <div>
-                        <h6 class="mb-0">Sidebar Colors</h6>
-                    </div>
-                    <a href="javascript:void(0)">
-                        <div class="my-2 text-left" sidenav-colors>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-purple-700 to-pink-500 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-slate-700 text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                active-color data-color-from="purple-700" data-color-to="pink-500"
-                                onclick="sidebarColor(this)"></span>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-gray-900 to-slate-800 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                data-color-from="gray-900" data-color-to="slate-800"
-                                onclick="sidebarColor(this)"></span>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-blue-600 to-cyan-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                data-color-from="blue-600" data-color-to="cyan-400"
-                                onclick="sidebarColor(this)"></span>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-green-600 to-lime-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                data-color-from="green-600" data-color-to="lime-400"
-                                onclick="sidebarColor(this)"></span>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-red-500 to-yellow-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                data-color-from="red-500" data-color-to="yellow-400"
-                                onclick="sidebarColor(this)"></span>
-                            <span
-                                class="text-xs rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-to-tl from-red-600 to-rose-400 relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                                data-color-from="red-600" data-color-to="rose-400"
-                                onclick="sidebarColor(this)"></span>
-                        </div>
-                    </a>
-                    <!-- Sidenav Type -->
-                    <div class="mt-4">
-                        <h6 class="mb-0">Sidenav Type</h6>
-                        <p class="text-sm leading-normal">Choose between 2 different sidenav types.</p>
-                    </div>
-                    <div class="flex">
-                        <button transparent-style-btn
-                            class="inline-block w-full px-4 py-3 mb-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border border-transparent border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-to-tl xl-max:from-purple-700 xl-max:to-pink-500 xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-purple-700 to-pink-500 bg-fuchsia-500 hover:border-fuchsia-500"
-                            data-class="bg-transparent" active-style>Transparent</button>
-                        <button white-style-btn
-                            class="inline-block w-full px-4 py-3 mb-2 ml-2 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-to-tl xl-max:from-purple-700 xl-max:to-pink-500 xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 border-fuchsia-500 bg-none text-fuchsia-500 hover:border-fuchsia-500"
-                            data-class="bg-white">White</button>
-                    </div>
-                    <p class="block mt-2 text-sm leading-normal xl:hidden">You can change the sidenav type just on
-                        desktop
-                        view.</p>
-                    <!-- Navbar Fixed -->
-                    <div class="mt-4">
-                        <h6 class="mb-0">Navbar Fixed</h6>
-                    </div>
-                    <div class="min-h-6 mb-0.5 block pl-0">
-                        <input
-                            class="rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5 relative float-left mt-1 ml-auto w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
-                            type="checkbox" navbarFixed />
-                    </div>
-                    <hr
-                        class="h-px bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent sm:my-6" />
-                    <a class="inline-block w-full px-6 py-3 mb-4 text-xs font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer leading-pro ease-soft-in hover:shadow-soft-xs hover:scale-102 active:opacity-85 tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800"
-                        href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind" target="_blank">Free
-                        Download</a>
-                    <a class="inline-block w-full px-6 py-3 mb-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer active:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro ease-soft-in tracking-tight-soft bg-150 bg-x-25 border-slate-700 text-slate-700 hover:bg-transparent hover:text-slate-700 hover:shadow-none active:bg-slate-700 active:text-white active:hover:bg-transparent active:hover:text-slate-700 active:hover:shadow-none"
-                        href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/"
-                        target="_blank"">View documentation</a>
-                    <div class="w-full text-center">
-                        <a class="github-button"
-                            href="https://github.com/creativetimofficial/soft-ui-dashboard-tailwind"
-                            data-icon="octicon-star" data-size="large" data-show-count="true"
-                            aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
-                        <h6 class="mt-4">Thank you for sharing!</h6>
-                        <a href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20Tailwind%20made%20by%20%40CreativeTim&hashtags=webdesign,dashboard,tailwindcss&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-tailwind"
-                            class="inline-block px-6 py-3 mb-0 mr-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
-                            target="_blank"> <i class="mr-1 fab fa-twitter" aria-hidden="true"></i> Tweet </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-tailwind"
-                            class="inline-block px-6 py-3 mb-0 mr-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
-                            target="_blank"> <i class="mr-1 fab fa-facebook-square" aria-hidden="true"></i> Share
-                        </a>
-                    </div>
+                    class="h-px bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent sm:my-6" />
+                <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer leading-pro text-xs ease-soft-in hover:shadow-soft-xs hover:scale-102 active:opacity-85 tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800"
+                    href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind" target="_blank">Free
+                    Download</a>
+                <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer active:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 border-slate-700 text-slate-700 hover:bg-transparent hover:text-slate-700 hover:shadow-none active:bg-slate-700 active:text-white active:hover:bg-transparent active:hover:text-slate-700 active:hover:shadow-none"
+                    href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/"
+                    target="_blank">View documentation</a>
+                <div class="w-full text-center">
+                    <a class="github-button" href="https://github.com/creativetimofficial/soft-ui-dashboard-tailwind"
+                        data-icon="octicon-star" data-size="large" data-show-count="true"
+                        aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
+                    <h6 class="mt-4">Thank you for sharing!</h6>
+                    <a href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20Tailwind%20made%20by%20%40CreativeTim&hashtags=webdesign,dashboard,tailwindcss&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-tailwind"
+                        class="inline-block px-6 py-3 mb-0 mr-2 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
+                        target="_blank"> <i class="mr-1 fab fa-twitter"></i> Tweet </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-tailwind"
+                        class="inline-block px-6 py-3 mb-0 mr-2 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
+                        target="_blank"> <i class="mr-1 fab fa-facebook-square"></i> Share </a>
                 </div>
             </div>
         </div>
+    </div>
 </body>
-
 <!-- plugin for charts  -->
-  <script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
-  <!-- plugin for scrollbar  -->
-  <script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
-  <!-- github button -->
-  <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
-  <!-- main script file  -->
-  <script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
+<script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
+<!-- plugin for scrollbar  -->
+<script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
+<!-- github button -->
+<script async defer src="https://buttons.github.io/buttons.js') }}"></script>
+<!-- main script file  -->
+<script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
 
-<!-- Script -->
 <script>
-    function filterProduk() {
-        const selectedGame = document.getElementById('filterGame').value;
-        const rows = document.querySelectorAll('#produkBody tr');
-        rows.forEach(row => {
-            const game = row.getAttribute('data-game');
-            row.style.display = (selectedGame === 'all' || game === selectedGame) ? '' : 'none';
-        });
-    }
+    let currentRow = null;
 
     function openModal(button) {
-        const row = button.closest('tr');
-        const cells = row.querySelectorAll('td');
-
-        document.getElementById('editId').value = cells[0].innerText;
-        document.getElementById('editNama').value = cells[1].innerText;
-        document.getElementById('editDeskripsi').value = cells[2].innerText;
-        document.getElementById('editHarga').value = cells[3].innerText;
-
-        document.getElementById('editModal').classList.remove('hidden');
-        document.getElementById('editModal').classList.add('flex');
+        currentRow = button.closest("tr");
+        const status = currentRow.getAttribute("data-status") || "pending";
+        selectStatusCircle(status);
+        document.getElementById("modal").classList.remove("hidden");
     }
 
     function closeModal() {
-        document.getElementById('editModal').classList.add('hidden');
-        document.getElementById('editModal').classList.remove('flex');
+        document.getElementById("modal").classList.add("hidden");
+        document.getElementById("buktiInput").value = "";
+        document.getElementById("previewImage").src = "";
+        document.getElementById("previewImage").classList.add("hidden");
+        document.getElementById("previewText").classList.remove("hidden");
     }
 
-    document.getElementById('editForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Simpan perubahan (di real case, kamu bisa kirim via AJAX atau form ke backend)
-        alert('Perubahan disimpan (simulasi).');
+    function previewBukti() {
+        const input = document.getElementById("buktiInput");
+        const file = input.files[0];
+        const previewImg = document.getElementById("previewImage");
+        const previewText = document.getElementById("previewText");
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                previewImg.src = e.target.result;
+                previewImg.classList.remove("hidden");
+                previewText.classList.add("hidden");
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function submitModal() {
+        const status = document.getElementById("statusSelect").value;
+        const bukti = document.getElementById("buktiInput").files[0];
+
+        if (!bukti) {
+            alert("Silakan upload bukti pembayaran.");
+            return;
+        }
+
+        alert(`Status: ${status} | Bukti: ${bukti.name}`);
         closeModal();
-    });
+    }
+
+    function selectStatusCircle(status) {
+        document.getElementById("statusSelect").value = status;
+        ['success', 'pending', 'failed'].forEach(s => {
+            const circle = document.getElementById(`circle-${s}`);
+            circle.classList.remove("bg-lime-500", "bg-yellow-400", "bg-red-500");
+            circle.classList.add("bg-black");
+        });
+
+        const activeCircle = document.getElementById(`circle-${status}`);
+        activeCircle.classList.remove("bg-black");
+
+        // Warna solid penuh sesuai status
+        if (status === 'success') {
+            activeCircle.classList.add("bg-lime-500");
+        } else if (status === 'pending') {
+            activeCircle.classList.add("bg-yellow-400");
+        } else if (status === 'failed') {
+            activeCircle.classList.add("bg-red-500");
+        }
+    }
 </script>
+
+
+
+
+
+
+
 
 </html>
