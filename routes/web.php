@@ -86,9 +86,20 @@ Route::middleware(['cek.login'])->group(function () {
         });
 
         // Admin pages
+
         //(menggunakan controller untuk ambil data dari database)
         Route::get('/admin/listacc', [ProductController::class, 'index'])->name('admin.produk.index');
 
+
+        Route::get('/admin/listacc', function () {
+            return view('Admin.listacc');
+        });
+
+        // Admin pages
+        Route::get('/admin/bayar', function () {
+            return view('Admin.bayar');
+        });
+        
 
         Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
         Route::post('/admin/tambah', [ProductController::class, 'store'])->name('admin.produk.store');
