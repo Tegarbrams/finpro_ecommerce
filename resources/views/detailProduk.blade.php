@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('asset/background_3.png'); 
+      background-image: url('asset/background/background_3.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   <section class="container mx-auto px-4 py-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
       <!-- Foto utama -->
-      <img src="asset/skin_ml.png" alt="MLBB Account" class="w-full h-auto rounded-lg shadow-md">
+      <img src="asset/skin/skin_ml.png" alt="MLBB Account" class="w-full h-auto rounded-lg shadow-md">
 
       <!-- Detail akun -->
       <div>
@@ -75,10 +75,10 @@
     <div class="mt-8">
       <h3 class="text-2xl font-semibold mb-4">Galeri Skin Akun</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <img src="asset/skin_1.png" alt="Skin 1" class="rounded-lg shadow-md">
-        <img src="asset/skin_2.png" alt="Skin 2" class="rounded-lg shadow-md">
-        <img src="asset/skin_3.png" alt="Skin 3" class="rounded-lg shadow-md">
-        <img src="asset/skin_4.png" alt="Skin 4" class="rounded-lg shadow-md">
+        <img src="asset/skin/skin_1.png" alt="Skin 1" class="rounded-lg shadow-md">
+        <img src="asset/skin/skin_2.png" alt="Skin 2" class="rounded-lg shadow-md">
+        <img src="asset/skin/skin_3.png" alt="Skin 3" class="rounded-lg shadow-md">
+        <img src="asset/skin/skin_4.png" alt="Skin 4" class="rounded-lg shadow-md">
       </div>
     </div>
   </section>

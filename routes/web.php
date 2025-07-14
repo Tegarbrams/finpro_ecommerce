@@ -90,11 +90,6 @@ Route::middleware(['cek.login'])->group(function () {
         //(menggunakan controller untuk ambil data dari database)
         Route::get('/admin/listacc', [ProductController::class, 'index'])->name('admin.produk.index');
 
-
-        Route::get('/admin/listacc', function () {
-            return view('Admin.listacc');
-        });
-
         // Admin pages
         Route::get('/admin/bayar', function () {
             return view('Admin.bayar');
