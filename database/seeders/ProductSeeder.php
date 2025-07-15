@@ -18,7 +18,8 @@ class ProductSeeder extends Seeder
             'name' => 'Akun ML Epic',
             'description' => 'Level tinggi, banyak skin.',
             'price' => 150000,
-            'image' => 'ml_epic.jpg',
+            'thumbnail' => 'ml_epic.jpg',
+            'screenshots' => json_encode(['ss1.jpg', 'ss2.jpg']),
             'game_id' => $ml->id, // relasi ke tabel games
         ]);
 
@@ -26,7 +27,8 @@ class ProductSeeder extends Seeder
             'name' => 'Akun PUBG Platinum',
             'description' => 'Rank Platinum.',
             'price' => 200000,
-            'image' => 'pubg_plat.png',
+            'thumbnail' => 'ml_epic.jpg',
+            'screenshots' => json_encode(['ss1.jpg', 'ss2.jpg']),
             'game_id' => $pubg->id,
         ]);
     }

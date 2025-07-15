@@ -360,7 +360,9 @@
                 class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
                 <h2 class="text-xl font-bold mb-4 text-white text-center">Edit Produk</h2>
 
-                <form id="editForm" method="POST" enctype="multipart/form-data" class="grid gap-4">
+                <form id="editForm" method="POST" action="{{ route('admin.produk.update', '__ID__') }}"
+                    enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
 
@@ -465,6 +467,12 @@
                     </div>
 
                     <div class="p-6 overflow-x-auto">
+                        @if (session('success'))
+                            <div class="mb-4 p-3 bg-green-500 text-white rounded-lg shadow">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <table class="w-full text-left text-white border-collapse">
                             <thead>
                                 <tr class="bg-gray-700">
@@ -473,6 +481,7 @@
                                     <th class="px-4 py-2 border-b border-gray-700">Deskripsi</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Harga</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Gambar</th>
+                                    <th class="px-4 py-2 border-b border-gray-700">Galeri</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Game</th>
                                     <th class="px-4 py-2 border-b border-gray-700">Aksi</th>
                                 </tr>
@@ -486,13 +495,35 @@
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             Rp{{ number_format($produk->price, 0, ',', '.') }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">
-                                            @if ($produk->image)
-                                                <img src="{{ asset($produk->image) }}" alt="gambar"
-                                                    class="w-20 h-20 object-cover rounded">
+                                            @if ($produk->thumbnail)
+                                                <img src="{{ asset('storage/' . $produk->thumbnail) }}"
+                                                    alt="gambar" class="w-20 h-20 object-cover rounded">
                                             @else
                                                 <span class="text-sm italic text-gray-400">Tidak ada gambar</span>
                                             @endif
+
                                         </td>
+
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            @php
+                                                $screenshots = is_array($produk->screenshots) 
+                                                    ? $produk->screenshots 
+                                                    : json_decode($produk->screenshots, true);
+                                            @endphp
+                                        
+                                            @if (!empty($screenshots))
+                                                <div class="flex gap-2">
+                                                    @foreach ($screenshots as $screenshot)
+                                                        <img src="{{ asset('storage/' . $screenshot) }}" alt="screenshot"
+                                                             class="w-12 h-12 object-cover rounded">
+                                                    @endforeach
+                                                </div>
+                                            @else
+                                                <span class="text-sm italic text-gray-400">Tidak ada</span>
+                                            @endif
+                                        </td>                                                                                
+
+
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             {{ $produk->game->name ?? '-' }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">
@@ -758,37 +789,36 @@
                 console.error(err);
             });
     });
-
 </script>
 
 <script>
-function previewImage(input, previewId) {
-    const file = input.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById(previewId).src = e.target.result;
+    function previewImage(input, previewId) {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById(previewId).src = e.target.result;
+            }
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(file);
     }
-}
 
-function previewMultipleImages(input, containerId, max = 3) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = ''; // Bersihkan preview sebelumnya
+    function previewMultipleImages(input, containerId, max = 3) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Bersihkan preview sebelumnya
 
-    const files = Array.from(input.files).slice(0, max);
-    files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.classList = 'h-24 object-contain border border-gray-600 rounded';
-            container.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-    });
-}
+        const files = Array.from(input.files).slice(0, max);
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList = 'h-24 object-contain border border-gray-600 rounded';
+                container.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
 </script>
 
 

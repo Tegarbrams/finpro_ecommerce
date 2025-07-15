@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\ProductController as UserProduct;
 
 
 // ===== PUBLIC ROUTES =====
@@ -127,11 +128,8 @@ Route::middleware(['cek.login'])->group(function () {
     });
 });
 
-// ===== LEGACY ROUTES (Untuk kompatibilitas - bisa dihapus jika tidak digunakan) =====
-// Route::get('/listacc', function () {
-//     return view('/Admin/listacc');
-// });
+// Tampilkan semua akun
+Route::get('/dataListAkun', [UserProduct::class, 'index'])->name('produk.index');
 
-// Route::get('/registerAdmin', function () {
-//     return view('/Admin/registerAdmin');
-// });
+// Tampilkan detail akun
+Route::get('/produk/{id}', [UserProduct::class, 'detail'])->name('produk.detail');

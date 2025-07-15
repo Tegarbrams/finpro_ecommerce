@@ -51,120 +51,33 @@
   <!-- List Produk -->
   <section class="max-w-7xl mx-auto px-6 py-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      
-      <!-- Card ML -->
+      @foreach($products as $product)
       <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_ml.png" class="w-full h-40 object-cover rounded-t-xl">
+        <img src="{{ asset('storage/' . $product->thumbnail) }}" class="w-full h-40 object-cover rounded-t-xl">
         <div class="p-4">
-          <span class="inline-block text-xs bg-blue-600 px-2 py-1 rounded-full mb-2">MLBB</span>
-          <h3 class="font-bold text-lg">Akun Mobile Legends - Mythic</h3>
-          <p class="text-sm text-gray-400 mb-1">Hero lengkap + 100 Skin Epic</p>
+          <span class="inline-block text-xs 
+            @if(strtolower($product->game->name) == 'mobile legends') bg-blue-600 
+            @elseif(strtolower($product->game->name) == 'valorant') bg-purple-600 
+            @elseif(strtolower($product->game->name) == 'pubg') bg-yellow-600 
+            @elseif(strtolower($product->game->name) == 'free fire') bg-green-600 
+            @else bg-gray-600 @endif 
+            px-2 py-1 rounded-full mb-2">
+            {{ $product->game->name }}
+          </span>
+  
+          <h3 class="font-bold text-lg">{{ $product->name }}</h3>
+          <p class="text-sm text-gray-400 mb-1">{{ $product->description }}</p>
           <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 850.000</span>
-            <a href="detailProduk" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
+            <span class="text-green-400 font-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+            <a href="{{ route('produk.detail', $product->id) }}" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
           </div>
         </div>
       </div>
-
-      <!-- Card Valorant -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_valo.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-purple-600 px-2 py-1 rounded-full mb-2">Valorant</span>
-          <h3 class="font-bold text-lg">Akun Valorant - Diamond</h3>
-          <p class="text-sm text-gray-400 mb-1">Reaver + Prime bundle aktif</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 750.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card PUBG -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_pubg.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-yellow-600 px-2 py-1 rounded-full mb-2">PUBG</span>
-          <h3 class="font-bold text-lg">PUBG Mobile - Max Outfit</h3>
-          <p class="text-sm text-gray-400 mb-1">Outfit Mythic + Skin senjata</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 690.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Free Fire -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_ff.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-green-600 px-2 py-1 rounded-full mb-2">Free fire</span>
-          <h3 class="font-bold text-lg">Garena Free Fire - Full Skin</h3>
-          <p class="text-sm text-gray-400 mb-1">Elite Master + Full Bandle</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 350.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card ML -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_ml.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-blue-600 px-2 py-1 rounded-full mb-2">MLBB</span>
-          <h3 class="font-bold text-lg">Akun Mobile Legends - Mythic</h3>
-          <p class="text-sm text-gray-400 mb-1">Hero lengkap + 100 Skin Epic</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 850.000</span>
-            <a href="detailProduk" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Valorant -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_valo.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-purple-600 px-2 py-1 rounded-full mb-2">Valorant</span>
-          <h3 class="font-bold text-lg">Akun Valorant - Diamond</h3>
-          <p class="text-sm text-gray-400 mb-1">Reaver + Prime bundle aktif</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 750.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card PUBG -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_pubg.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-yellow-600 px-2 py-1 rounded-full mb-2">PUBG</span>
-          <h3 class="font-bold text-lg">PUBG Mobile - Max Outfit</h3>
-          <p class="text-sm text-gray-400 mb-1">Outfit Mythic + Skin senjata</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 690.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Free Fire -->
-      <div class="bg-gray-800/40 p-4 rounded-lg shadow-md">
-        <img src="asset/akun_ff.png" class="w-full h-40 object-cover rounded-t-xl">
-        <div class="p-4">
-          <span class="inline-block text-xs bg-green-600 px-2 py-1 rounded-full mb-2">Free fire</span>
-          <h3 class="font-bold text-lg">Garena Free Fire - Full Skin</h3>
-          <p class="text-sm text-gray-400 mb-1">Elite Master + Full Bandle</p>
-          <div class="flex justify-between items-center">
-            <span class="text-green-400 font-bold">Rp 350.000</span>
-            <a href="#" class="text-sm bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-          </div>
-        </div>
-      </div>
-      
+      @endforeach
     </div>
   </section>
+  
+  
 
  <footer class="mt-20 bg-black text-center py-6">
       <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>

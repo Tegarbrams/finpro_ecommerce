@@ -358,14 +358,12 @@
                         </div>
                         <div class="flex-auto px-0 pt-0 pb-2">
                             <div class="p-4">
-                                <form method="POST" action="{{ route('admin.produk.store') }}"
-                                    enctype="multipart/form-data" class="space-y-4">
+                                <form method="POST" action="{{ route('admin.produk.store') }}" enctype="multipart/form-data" class="space-y-4">
                                     @csrf
-
+                                
                                     <!-- Pilihan Game -->
                                     <div>
-                                        <label for="game_id" class="block text-sm font-medium text-white">Pilih
-                                            Game</label>
+                                        <label for="game_id" class="block text-sm font-medium text-white">Pilih Game</label>
                                         <select id="game_id" name="game_id"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
@@ -375,58 +373,48 @@
                                             @endforeach
                                         </select>
                                     </div>
-
+                                
                                     <!-- Nama Produk -->
                                     <div>
-                                        <label for="name" class="block text-sm font-medium text-white">Nama
-                                            Produk</label>
+                                        <label for="name" class="block text-sm font-medium text-white">Nama Produk</label>
                                         <input type="text" id="name" name="name"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-
+                                
                                     <!-- Harga Produk -->
                                     <div>
-                                        <label for="price" class="block text-sm font-medium text-white">Harga
-                                            Produk</label>
+                                        <label for="price" class="block text-sm font-medium text-white">Harga Produk</label>
                                         <input type="number" id="price" name="price"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-
+                                
                                     <!-- Deskripsi Produk -->
                                     <div>
-                                        <label for="description"
-                                            class="block text-sm font-medium text-white">Deskripsi</label>
+                                        <label for="description" class="block text-sm font-medium text-white">Deskripsi</label>
                                         <textarea id="description" name="description" rows="4"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required></textarea>
                                     </div>
-
-                                    <!-- Upload Gambar -->
+                                
                                     <!-- Upload Thumbnail Produk -->
                                     <div>
-                                        <label for="thumbnail" class="block text-sm font-medium text-white">Thumbnail
-                                            Produk</label>
+                                        <label for="thumbnail" class="block text-sm font-medium text-white">Thumbnail Produk</label>
                                         <input type="file" id="thumbnail" name="thumbnail"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required>
+                                            accept="image/*" required>
+                                        <p class="text-xs text-gray-300 mt-1">Hanya 1 gambar thumbnail utama.</p>
                                     </div>
 
-                                    <!-- Upload Screenshot Detail Skin -->
                                     <div>
-                                        <label for="screenshots[]" class="block text-sm font-medium text-white">
-                                            Screenshot Detail Skin (maks 3 gambar)
-                                        </label>
+                                        <label for="screenshots" class="block text-sm font-medium text-white">Galeri Skin Akun</label>
                                         <input type="file" id="screenshots" name="screenshots[]" multiple
-                                            accept="image/*"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required>
-                                        <p class="text-xs text-white mt-1">Upload hingga 3 screenshot skin yang ada di
-                                            dalam game.</p>
+                                            accept="image/*">
+                                        <p class="text-xs text-gray-300 mt-1">Upload beberapa gambar untuk galeri skin akun.</p>
                                     </div>
-
-
+                                      
                                     <!-- Tombol Submit -->
                                     <div class="pt-4">
                                         <button type="submit"
@@ -434,7 +422,17 @@
                                             Simpan Produk
                                         </button>
                                     </div>
+                                    @if ($errors->any())
+                                        <div class="text-red-500">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </form>
+                                
 
                             </div>
                         </div>
@@ -487,10 +485,10 @@
         </div>
     </main>
     <div fixed-plugin>
-        <a fixed-plugin-button
+        {{-- <a fixed-plugin-button
             class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
             <i class="py-2 pointer-events-none fa fa-cog"> </i>
-        </a>
+        </a> --}}
         <!-- -right-90 in loc de 0-->
         <div fixed-plugin-card
             class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 bg-white bg-clip-border px-2.5 duration-200">
