@@ -34,14 +34,15 @@
     <link href="{{ url('asset/css/soft-ui-dashboard-tailwind.css?v=1.0.5') }}" rel="stylesheet" />
 
     <script src="{{ url('https://cdn.tailwindcss.com') }}"></script>
-    <link href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
+    <link
+        href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
 
     <script src="{{ url('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  </head>
+</head>
 
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-900 text-white">
 
@@ -244,11 +245,12 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="text-white ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
+                        <span
+                            class="text-white ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
                     </a>
                 </li>
 
-                 <li class="mt-0.5 w-full">
+                <li class="mt-0.5 w-full">
                     <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
                         href="../pages/profile.html">
                         <div
@@ -276,11 +278,12 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="text-white ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Log Out</span>
+                        <span class="text-white ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Log
+                            Out</span>
                     </a>
                 </li>
 
-               
+
             </ul>
         </div>
 
@@ -324,7 +327,7 @@
                                 <span class="hidden sm:inline">Search</span>
                             </a>
                         </li>
-                        
+
 
                         <!-- notifications -->
 
@@ -355,53 +358,75 @@
                         </div>
                         <div class="flex-auto px-0 pt-0 pb-2">
                             <div class="p-4">
-                                <form method="POST" action="{{ route('admin.produk.store') }}" enctype="multipart/form-data" class="space-y-4">
+                                <form method="POST" action="{{ route('admin.produk.store') }}"
+                                    enctype="multipart/form-data" class="space-y-4">
                                     @csrf
-                                
+
                                     <!-- Pilihan Game -->
                                     <div>
-                                        <label for="game_id" class="block text-sm font-medium text-white">Pilih Game</label>
+                                        <label for="game_id" class="block text-sm font-medium text-white">Pilih
+                                            Game</label>
                                         <select id="game_id" name="game_id"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                             <option value="">-- Pilih Game --</option>
-                                            @foreach($games as $game)
+                                            @foreach ($games as $game)
                                                 <option value="{{ $game->id }}">{{ $game->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                
+
                                     <!-- Nama Produk -->
                                     <div>
-                                        <label for="name" class="block text-sm font-medium text-white">Nama Produk</label>
+                                        <label for="name" class="block text-sm font-medium text-white">Nama
+                                            Produk</label>
                                         <input type="text" id="name" name="name"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-                                
+
                                     <!-- Harga Produk -->
                                     <div>
-                                        <label for="price" class="block text-sm font-medium text-white">Harga Produk</label>
+                                        <label for="price" class="block text-sm font-medium text-white">Harga
+                                            Produk</label>
                                         <input type="number" id="price" name="price"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required>
                                     </div>
-                                
+
                                     <!-- Deskripsi Produk -->
                                     <div>
-                                        <label for="description" class="block text-sm font-medium text-white">Deskripsi</label>
+                                        <label for="description"
+                                            class="block text-sm font-medium text-white">Deskripsi</label>
                                         <textarea id="description" name="description" rows="4"
                                             class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required></textarea>
                                     </div>
-                                
+
                                     <!-- Upload Gambar -->
+                                    <!-- Upload Thumbnail Produk -->
                                     <div>
-                                        <label for="image" class="block text-sm font-medium text-white">Gambar Produk</label>
-                                        <input type="file" id="image" name="image"
-                                            class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <label for="thumbnail" class="block text-sm font-medium text-white">Thumbnail
+                                            Produk</label>
+                                        <input type="file" id="thumbnail" name="thumbnail"
+                                            class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required>
                                     </div>
-                                
+
+                                    <!-- Upload Screenshot Detail Skin -->
+                                    <div>
+                                        <label for="screenshots[]" class="block text-sm font-medium text-white">
+                                            Screenshot Detail Skin (maks 3 gambar)
+                                        </label>
+                                        <input type="file" id="screenshots" name="screenshots[]" multiple
+                                            accept="image/*"
+                                            class="mt-1 block w-full rounded-xl border bg-gray-600 border-gray-800 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required>
+                                        <p class="text-xs text-white mt-1">Upload hingga 3 screenshot skin yang ada di
+                                            dalam game.</p>
+                                    </div>
+
+
                                     <!-- Tombol Submit -->
                                     <div class="pt-4">
                                         <button type="submit"
@@ -410,7 +435,7 @@
                                         </button>
                                     </div>
                                 </form>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -419,46 +444,46 @@
 
 
 
-        <footer class="pt-4">
-            <div class="w-full px-6 mx-auto">
-                <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-                    <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                        <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear() + ",");
-                            </script>
-                            made with <i class="fa fa-heart"></i> by
-                            IT Division TA Store.
+            <footer class="pt-4">
+                <div class="w-full px-6 mx-auto">
+                    <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
+                        <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
+                            <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear() + ",");
+                                </script>
+                                made with <i class="fa fa-heart"></i> by
+                                IT Division TA Store.
+                            </div>
+                        </div>
+                        <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
+                            <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Company</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/presentation"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://creative-tim.com/blog"
+                                        class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/license"
+                                        class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
+                                        target="_blank">Products</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                        <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Company</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://creative-tim.com/blog"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Team</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license"
-                                    class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Products</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
         </div>
     </main>
     <div fixed-plugin>
@@ -559,13 +584,13 @@
         </div>
     </div>
 </body>
- <!-- plugin for charts  -->
-  <script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
-  <!-- plugin for scrollbar  -->
-  <script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
-  <!-- github button -->
-  <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
-  <!-- main script file  -->
-  <script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
+<!-- plugin for charts  -->
+<script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
+<!-- plugin for scrollbar  -->
+<script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
+<!-- github button -->
+<script async defer src="https://buttons.github.io/buttons.js') }}"></script>
+<!-- main script file  -->
+<script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
 
 </html>

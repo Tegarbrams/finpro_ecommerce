@@ -34,14 +34,15 @@
     <link href="{{ url('asset/css/soft-ui-dashboard-tailwind.css?v=1.0.5') }}" rel="stylesheet" />
 
     <script src="{{ url('https://cdn.tailwindcss.com') }}"></script>
-    <link href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
+    <link
+        href="{{ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet') }}">
 
     <script src="{{ url('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  </head>
+</head>
 
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-900 text-white">
 
@@ -354,60 +355,76 @@
 
         <!-- Modal Edit -->
         <div id="editModal"
-        class="fixed inset-0 z-50 items-center justify-center hidden overflow-auto bg-black bg-opacity-50">
-       <div class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
-           <h2 class="text-xl font-bold mb-4 text-white text-center">Edit Produk</h2>
-   
-           <form id="editForm" method="POST" enctype="multipart/form-data" class="grid gap-4">
-               @csrf
-               @method('PUT')
-   
-               <input type="hidden" id="editId" name="id">
-   
-               <!-- Nama Produk -->
-               <div>
-                   <label for="editNama" class="block mb-1 text-sm text-white">Nama Produk</label>
-                   <input type="text" id="editNama" name="name"
-                          class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-               </div>
-   
-               <!-- Deskripsi -->
-               <div>
-                   <label for="editDeskripsi" class="block mb-1 text-sm text-white">Deskripsi</label>
-                   <textarea id="editDeskripsi" name="description"
-                             class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500"></textarea>
-               </div>
-   
-               <!-- Harga -->
-               <div>
-                   <label for="editHarga" class="block mb-1 text-sm text-white">Harga</label>
-                   <input type="number" id="editHarga" name="price"
-                          class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-               </div>
-   
-               <!-- Gambar -->
-               <div>
-                   <label for="editImage" class="block mb-1 text-sm text-white">Gambar Produk</label>
-                   <img id="previewGambar" src="#" alt="Preview" class="h-24 object-contain mb-2 border border-gray-600 rounded">
-                   <input type="file" id="editImage" name="image"
-                          class="w-full text-white file:bg-gray-600 file:border-0 file:px-3 file:py-1 file:rounded file:text-sm file:text-white">
-               </div>
-   
-               <!-- Tombol Aksi -->
-               <div class="flex justify-end gap-2">
-                   <button type="button" onclick="closeModal()"
-                           class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-white">
-                       Batal
-                   </button>
-                   <button type="submit"
-                           class="bg-lime-500 hover:bg-lime-600 px-4 py-2 rounded text-white">
-                       Simpan
-                   </button>
-               </div>
-           </form>
-       </div>
-   </div>
-   
+            class="fixed inset-0 z-50 items-center justify-center hidden overflow-auto bg-black bg-opacity-50">
+            <div
+                class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
+                <h2 class="text-xl font-bold mb-4 text-white text-center">Edit Produk</h2>
+
+                <form id="editForm" method="POST" enctype="multipart/form-data" class="grid gap-4">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="editId" name="id">
+
+                    <!-- Nama Produk -->
+                    <div>
+                        <label for="editNama" class="block mb-1 text-sm text-white">Nama Produk</label>
+                        <input type="text" id="editNama" name="name"
+                            class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+                    </div>
+
+                    <!-- Deskripsi -->
+                    <div>
+                        <label for="editDeskripsi" class="block mb-1 text-sm text-white">Deskripsi</label>
+                        <textarea id="editDeskripsi" name="description"
+                            class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500"></textarea>
+                    </div>
+
+                    <!-- Harga -->
+                    <div>
+                        <label for="editHarga" class="block mb-1 text-sm text-white">Harga</label>
+                        <input type="number" id="editHarga" name="price"
+                            class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+                    </div>
+
+                    <!-- Gambar -->
+                    <!-- Gambar Thumbnail -->
+                    <div>
+                        <label for="editThumbnail" class="block mb-1 text-sm text-white">Thumbnail Produk</label>
+                        <img id="previewThumbnail" src="#" alt="Thumbnail Preview"
+                            class="h-24 object-contain mb-2 border border-gray-600 rounded">
+                        <input type="file" id="editThumbnail" name="thumbnail"
+                            class="w-full text-white file:bg-gray-600 file:border-0 file:px-3 file:py-1 file:rounded file:text-sm file:text-white"
+                            onchange="previewImage(this, 'previewThumbnail')">
+                    </div>
+
+                    <!-- Gambar Screenshot -->
+                    <div>
+                        <label for="editScreenshots" class="block mb-1 text-sm text-white">Screenshot Skin (maks
+                            3)</label>
+                        <div id="previewScreenshots" class="flex gap-2 mb-2">
+                            <!-- Previews akan muncul di sini -->
+                        </div>
+                        <input type="file" id="editScreenshots" name="screenshots[]" multiple accept="image/*"
+                            class="w-full text-white file:bg-gray-600 file:border-0 file:px-3 file:py-1 file:rounded file:text-sm file:text-white"
+                            onchange="previewMultipleImages(this, 'previewScreenshots', 3)">
+                    </div>
+
+
+                    <!-- Tombol Aksi -->
+                    <div class="flex justify-end gap-2">
+                        <button type="button" onclick="closeModal()"
+                            class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-white">
+                            Batal
+                        </button>
+                        <button type="submit" class="bg-lime-500 hover:bg-lime-600 px-4 py-2 rounded text-white">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 
 
         <!-- Tabel Produk -->
@@ -421,26 +438,29 @@
                         <!-- Dropdown Pilih Game -->
                         <!-- Dropdown Pilih Game -->
                         <div class="mt-4">
-                            <label for="filterGame" class="block mb-2 text-sm font-medium text-white">Pilih Game:</label>
+                            <label for="filterGame" class="block mb-2 text-sm font-medium text-white">Pilih
+                                Game:</label>
                             <select id="filterGame"
-                                    class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-                                <option value="all" {{ $selectedGame == 'all' ? 'selected' : '' }}>Semua Game</option>
+                                class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+                                <option value="all" {{ $selectedGame == 'all' ? 'selected' : '' }}>Semua Game
+                                </option>
                                 @foreach ($games as $game)
-                                    <option value="{{ $game->name }}" {{ $selectedGame == $game->name ? 'selected' : '' }}>
+                                    <option value="{{ $game->name }}"
+                                        {{ $selectedGame == $game->name ? 'selected' : '' }}>
                                         {{ $game->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-                        
+
 
                         <script>
-                            document.getElementById('filterGame').addEventListener('change', function () {
+                            document.getElementById('filterGame').addEventListener('change', function() {
                                 const selectedGame = this.value;
                                 window.location.href = `{{ url('/admin/listacc') }}?game=${encodeURIComponent(selectedGame)}`;
                             });
                         </script>
-                        
+
 
                     </div>
 
@@ -459,29 +479,33 @@
                             </thead>
                             <tbody id="produkBody" class="bg-gray-800">
                                 @forelse ($products as $produk)
-                                <tr data-id="{{ $produk->id }}" data-game="{{ $produk->game->name ?? '-' }}">
+                                    <tr data-id="{{ $produk->id }}" data-game="{{ $produk->game->name ?? '-' }}">
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->id }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->name }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->description }}</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">Rp{{ number_format($produk->price, 0, ',', '.') }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            Rp{{ number_format($produk->price, 0, ',', '.') }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             @if ($produk->image)
-                                                <img src="{{ asset($produk->image) }}" alt="gambar" class="w-20 h-20 object-cover rounded">
+                                                <img src="{{ asset($produk->image) }}" alt="gambar"
+                                                    class="w-20 h-20 object-cover rounded">
                                             @else
                                                 <span class="text-sm italic text-gray-400">Tidak ada gambar</span>
                                             @endif
                                         </td>
-                                        <td class="px-4 py-2 border-b border-gray-700">{{ $produk->game->name ?? '-' }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            {{ $produk->game->name ?? '-' }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
-                                                    onclick="openModal(this)">Edit</button>
-                                                    <button onclick="confirmDelete({{ $produk->id }})"
-                                                        class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>                                                    
+                                                onclick="openModal(this)">Edit</button>
+                                            <button onclick="confirmDelete({{ $produk->id }})"
+                                                class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="px-4 py-2 text-center text-white border-b border-gray-700">
+                                        <td colspan="7"
+                                            class="px-4 py-2 text-center text-white border-b border-gray-700">
                                             Tidak ada produk.
                                         </td>
                                     </tr>
@@ -489,21 +513,22 @@
                             </tbody>
                         </table>
 
-                    </table>
+                        </table>
 
-                    <!-- Modal Konfirmasi Hapus -->
-                    <div id="deleteModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
-                        <div class="bg-white text-black p-6 rounded-xl shadow-lg w-80">
-                            <h2 class="text-lg font-bold mb-4">Yakin ingin menghapus produk ini?</h2>
-                            <div class="flex justify-end space-x-3">
-                                <button onclick="closeDeleteModal()"
-                                    class="px-4 py-2 bg-gray-400 rounded hover:bg-gray-500 text-white">Batal</button>
-                                <button onclick="deleteProduct()"
-                                    class="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white">Hapus</button>
+                        <!-- Modal Konfirmasi Hapus -->
+                        <div id="deleteModal"
+                            class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
+                            <div class="bg-white text-black p-6 rounded-xl shadow-lg w-80">
+                                <h2 class="text-lg font-bold mb-4">Yakin ingin menghapus produk ini?</h2>
+                                <div class="flex justify-end space-x-3">
+                                    <button onclick="closeDeleteModal()"
+                                        class="px-4 py-2 bg-gray-400 rounded hover:bg-gray-500 text-white">Batal</button>
+                                    <button onclick="deleteProduct()"
+                                        class="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white">Hapus</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
+
 
                     </div>
                 </div>
@@ -658,13 +683,13 @@
 </body>
 
 <!-- plugin for charts  -->
-  <script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
-  <!-- plugin for scrollbar  -->
-  <script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
-  <!-- github button -->
-  <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
-  <!-- main script file  -->
-  <script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
+<script src="{{ url('asset/js/plugins/chartjs.min.js') }}" async></script>
+<!-- plugin for scrollbar  -->
+<script src="{{ url('asset/js/plugins/perfect-scrollbar.min.js') }}" async></script>
+<!-- github button -->
+<script async defer src="https://buttons.github.io/buttons.js') }}"></script>
+<!-- main script file  -->
+<script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
 
 <!-- Script -->
 <script>
@@ -678,24 +703,24 @@
     }
 
     function openModal(button) {
-    const row = button.closest('tr');
-    const cells = row.querySelectorAll('td');
+        const row = button.closest('tr');
+        const cells = row.querySelectorAll('td');
 
-    const id = cells[0].innerText.trim();
+        const id = cells[0].innerText.trim();
 
-    document.getElementById('editId').value = id;
-    document.getElementById('editNama').value = cells[1].innerText.trim();
-    document.getElementById('editDeskripsi').value = cells[2].innerText.trim();
-    document.getElementById('editHarga').value = cells[3].innerText.trim().replace('Rp', '').replace('.', '');
+        document.getElementById('editId').value = id;
+        document.getElementById('editNama').value = cells[1].innerText.trim();
+        document.getElementById('editDeskripsi').value = cells[2].innerText.trim();
+        document.getElementById('editHarga').value = cells[3].innerText.trim().replace('Rp', '').replace('.', '');
 
-    // Set form action dynamically
-    const form = document.getElementById('editForm');
-    form.action = `/admin/edit/${id}`;
+        // Set form action dynamically
+        const form = document.getElementById('editForm');
+        form.action = `/admin/edit/${id}`;
 
-    // Tampilkan modal
-    document.getElementById('editModal').classList.remove('hidden');
-    document.getElementById('editModal').classList.add('flex');
-}
+        // Tampilkan modal
+        document.getElementById('editModal').classList.remove('hidden');
+        document.getElementById('editModal').classList.add('flex');
+    }
 
 
     function closeModal() {
@@ -704,46 +729,68 @@
     }
 
     document.getElementById('editForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Hindari reload
+        e.preventDefault(); // Hindari reload
 
-    const form = e.target;
-    const id = document.getElementById('editId').value;
-    const url = `/admin/edit/${id}`; // Pastikan route ini sesuai
+        const form = e.target;
+        const id = document.getElementById('editId').value;
+        const url = `/admin/edit/${id}`; // Pastikan route ini sesuai
 
-    const formData = new FormData(form);
+        const formData = new FormData(form);
 
-    fetch(url, {
-        method: 'POST', // Laravel butuh POST + spoofed _method = PUT
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-        },
-        body: formData
-    })
-    .then(res => {
-        if (!res.ok) throw new Error('Gagal update!');
-        return res.json();
-    })
-    .then(data => {
-        alert('Produk berhasil diupdate!');
-        closeModal();
-        location.reload(); // Muat ulang untuk menampilkan data baru
-    })
-    .catch(err => {
-        alert('Terjadi kesalahan saat menyimpan data.');
-        console.error(err);
-    });
-});
-
-
-
-    document.getElementById('editImage').addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            document.getElementById('previewGambar').src = URL.createObjectURL(file);
-        }
+        fetch(url, {
+                method: 'POST', // Laravel butuh POST + spoofed _method = PUT
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                },
+                body: formData
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Gagal update!');
+                return res.json();
+            })
+            .then(data => {
+                alert('Produk berhasil diupdate!');
+                closeModal();
+                location.reload(); // Muat ulang untuk menampilkan data baru
+            })
+            .catch(err => {
+                alert('Terjadi kesalahan saat menyimpan data.');
+                console.error(err);
+            });
     });
 
 </script>
+
+<script>
+function previewImage(input, previewId) {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(previewId).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+function previewMultipleImages(input, containerId, max = 3) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Bersihkan preview sebelumnya
+
+    const files = Array.from(input.files).slice(0, max);
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.classList = 'h-24 object-contain border border-gray-600 rounded';
+            container.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+</script>
+
 
 <script>
     let deleteId = null;
@@ -764,29 +811,29 @@
         if (!deleteId) return;
 
         fetch(`/admin/produk/${deleteId}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Hapus baris dari tabel
-                const row = document.querySelector(`#produkBody tr[data-id="${deleteId}"]`);
-                if (row) row.remove();
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Hapus baris dari tabel
+                    const row = document.querySelector(`#produkBody tr[data-id="${deleteId}"]`);
+                    if (row) row.remove();
 
-                alert('Produk berhasil dihapus!');
-            } else {
-                alert('Gagal menghapus produk.');
-            }
-            closeDeleteModal();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Terjadi kesalahan saat menghapus.');
-            closeDeleteModal();
-        });
+                    alert('Produk berhasil dihapus!');
+                } else {
+                    alert('Gagal menghapus produk.');
+                }
+                closeDeleteModal();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menghapus.');
+                closeDeleteModal();
+            });
     }
 </script>
 

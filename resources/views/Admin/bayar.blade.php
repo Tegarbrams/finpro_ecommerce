@@ -425,33 +425,29 @@
             </div>
 
             <!-- MODAL -->
+            <!-- Modal Bukti Pembayaran -->
+            <!-- Modal Bukti Pembayaran -->
             <div id="modal"
                 class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
                 <div class="bg-gray-800 text-white p-6 rounded-2xl w-full max-w-lg shadow-2xl animate-fadeIn">
 
                     <!-- Header -->
                     <div class="mb-6 border-b pb-4 flex items-center space-x-3">
-                        <h3 class="text-xl font-semibold text-white">Pembayaran Akun</h3>
+                        <h3 class="text-xl font-semibold text-white">Bukti Pembayaran</h3>
                     </div>
 
                     <!-- Preview Bukti -->
                     <div
-                        class="w-full h-64 bg-gray-900 border border-gray-700 rounded-lg mb-4 flex items-center justify-center shadow-inner relative overflow-hidden">
+                        class="w-full h-72 bg-gray-900 border border-gray-700 rounded-lg mb-6 flex items-center justify-center shadow-inner relative overflow-hidden">
                         <span id="previewText" class="text-gray-500 text-sm absolute">Belum ada gambar</span>
-                        <img id="previewImage" src="" alt="Preview" class="hidden h-full object-contain" />
+                        <img id="previewImage" src="" alt="Bukti Pembayaran"
+                            class="hidden h-full object-contain" />
                     </div>
 
-                    <!-- Upload Tombol -->
-                    <label
-                        class="w-full bg-lime-600 hover:bg-lime-700 transition px-4 py-3 rounded-lg text-white font-medium text-center cursor-pointer block mb-6">
-                        <i class="mr-2 fa fa-upload"></i> Upload Bukti Pembayaran
-                        <input type="file" id="buktiInput" class="hidden" accept="image/*"
-                            onchange="previewBukti()" />
-                    </label>
-
-                    <!-- Status Section -->
-                    <div class="mb-2 text-sm font-semibold text-gray-300 text-center tracking-wide uppercase">Status
-                        Pembayaran</div>
+                    <!-- Status Pembayaran -->
+                    <div class="mb-2 text-sm font-semibold text-gray-300 text-center tracking-wide uppercase">
+                        Status Pembayaran
+                    </div>
                     <div class="flex justify-center space-x-4 mb-6">
                         <!-- Sukses -->
                         <div onclick="selectStatusCircle('success')"
@@ -476,11 +472,10 @@
                     </div>
                     <input type="hidden" id="statusSelect" value="pending" />
 
-
                     <!-- Footer -->
                     <div class="pt-4 border-t border-gray-700 flex justify-end space-x-2">
                         <button onclick="closeModal()"
-                            class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-white">Batal</button>
+                            class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-white">Tutup</button>
                         <button onclick="submitModal()"
                             class="px-4 py-2 bg-lime-600 hover:bg-lime-700 rounded-lg text-white font-semibold">Simpan</button>
                     </div>
@@ -646,81 +641,58 @@
 <!-- main script file  -->
 <script src="{{ url('asset/js/soft-ui-dashboard-tailwind.js?v=1.0.5') }}" async></script>
 
+<!-- Script -->
 <script>
-    let currentRow = null;
+    function openBuktiModal(imageUrl, status = 'pending') {
+        const modal = document.getElementById('modal');
+        const previewImage = document.getElementById('previewImage');
+        const previewText = document.getElementById('previewText');
 
-    function openModal(button) {
-        currentRow = button.closest("tr");
-        const status = currentRow.getAttribute("data-status") || "pending";
+        // Tampilkan gambar bukti
+        if (imageUrl) {
+            previewImage.src = imageUrl;
+            previewImage.classList.remove('hidden');
+            previewText.classList.add('hidden');
+        } else {
+            previewImage.src = '';
+            previewImage.classList.add('hidden');
+            previewText.classList.remove('hidden');
+        }
+
+        // Set status awal
         selectStatusCircle(status);
-        document.getElementById("modal").classList.remove("hidden");
+
+        // Tampilkan modal
+        modal.classList.remove('hidden');
     }
 
     function closeModal() {
-        document.getElementById("modal").classList.add("hidden");
-        document.getElementById("buktiInput").value = "";
-        document.getElementById("previewImage").src = "";
-        document.getElementById("previewImage").classList.add("hidden");
-        document.getElementById("previewText").classList.remove("hidden");
-    }
-
-    function previewBukti() {
-        const input = document.getElementById("buktiInput");
-        const file = input.files[0];
-        const previewImg = document.getElementById("previewImage");
-        const previewText = document.getElementById("previewText");
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = e => {
-                previewImg.src = e.target.result;
-                previewImg.classList.remove("hidden");
-                previewText.classList.add("hidden");
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    function submitModal() {
-        const status = document.getElementById("statusSelect").value;
-        const bukti = document.getElementById("buktiInput").files[0];
-
-        if (!bukti) {
-            alert("Silakan upload bukti pembayaran.");
-            return;
-        }
-
-        alert(`Status: ${status} | Bukti: ${bukti.name}`);
-        closeModal();
+        document.getElementById('modal').classList.add('hidden');
     }
 
     function selectStatusCircle(status) {
-        document.getElementById("statusSelect").value = status;
-        ['success', 'pending', 'failed'].forEach(s => {
-            const circle = document.getElementById(`circle-${s}`);
-            circle.classList.remove("bg-lime-500", "bg-yellow-400", "bg-red-500");
-            circle.classList.add("bg-black");
+        const statusList = ['success', 'pending', 'failed'];
+        statusList.forEach(s => {
+            const el = document.getElementById(`circle-${s}`);
+            el.style.backgroundColor = 'black';
         });
 
-        const activeCircle = document.getElementById(`circle-${status}`);
-        activeCircle.classList.remove("bg-black");
+        const selected = document.getElementById(`circle-${status}`);
+        if (status === 'success') selected.style.backgroundColor = '#22c55e';
+        if (status === 'pending') selected.style.backgroundColor = '#eab308';
+        if (status === 'failed') selected.style.backgroundColor = '#ef4444';
 
-        // Warna solid penuh sesuai status
-        if (status === 'success') {
-            activeCircle.classList.add("bg-lime-500");
-        } else if (status === 'pending') {
-            activeCircle.classList.add("bg-yellow-400");
-        } else if (status === 'failed') {
-            activeCircle.classList.add("bg-red-500");
-        }
+        document.getElementById('statusSelect').value = status;
+    }
+
+    function submitModal() {
+        const selectedStatus = document.getElementById('statusSelect').value;
+        console.log("Status yang dipilih:", selectedStatus);
+        // Tambahkan logic kirim data ke backend via fetch/ajax di sini jika perlu
+
+        closeModal(); // Tutup modal setelah submit
     }
 </script>
-
-
-
-
-
-
 
 
 </html>
