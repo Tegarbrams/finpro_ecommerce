@@ -48,7 +48,7 @@
 
       <div class="flex flex-col items-center space-y-4">
         <!-- Gambar QR Code (static sample) -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=1234567890&size=200x200" 
+        <img src={{ asset("asset/Qris.png")}}
              alt="QRIS Code" 
              class="w-48 h-48 border rounded-lg shadow"/>
 
