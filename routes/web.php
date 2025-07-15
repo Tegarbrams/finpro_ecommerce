@@ -95,9 +95,13 @@ Route::middleware(['cek.login'])->group(function () {
             return view('Admin.bayar');
         });
         
-
+        //crud untuk dash admin
         Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
         Route::post('/admin/tambah', [ProductController::class, 'store'])->name('admin.produk.store');
+        Route::get('/admin/edit/{id}', [ProductController::class, 'edit'])->name('admin.produk.edit');
+        Route::put('/admin/edit/{id}', [ProductController::class, 'update'])->name('admin.produk.update');
+        Route::delete('/admin/produk/{id}', [ProductController::class, 'destroy'])->name('admin.produk.destroy');
+
 
 
         Route::get('/admin/register', function () {

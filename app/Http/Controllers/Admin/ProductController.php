@@ -57,4 +57,54 @@ class ProductController extends Controller
 
         return redirect()->route('admin.produk.tambah')->with('success', 'Produk berhasil ditambahkan.');
     }
+
+    public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    $games = Game::all();
+    return view('Admin.editacc', compact('product', 'games'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required',
+        'description' => 'nullable|string',
+        'price' => 'required|integer',
+        'image' => 'nullable|image|max:2048',
+    ]);
+
+    $product = Product::findOrFail($id);
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->price = $request->price;
+
+    if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploads'), $imageName);
+        $product->image = $imageName;
+    }
+
+    $product->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Produk berhasil diperbarui!',
+        'product' => $product
+    ]);
+}
+
+public function destroy($id)
+{
+    try {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+
+
 }

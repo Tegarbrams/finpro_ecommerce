@@ -354,55 +354,60 @@
 
         <!-- Modal Edit -->
         <div id="editModal"
-            class="fixed inset-0 z-50 items-center justify-center hidden overflow-auto bg-black bg-opacity-50">
-            <div
-                class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
-                <h2 class="text-xl font-bold mb-4 text-white">Edit Produk</h2>
-                <form id="editForm">
-                    <input type="hidden" id="editId">
-
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Nama Produk</label>
-                        <input type="text" id="editNama"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500" />
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Deskripsi</label>
-                        <textarea id="editDeskripsi"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500"></textarea>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Harga</label>
-                        <input type="text" id="editHarga"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500" />
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1 text-slate-300">Gambar Produk</label>
-
-                        <!-- Preview Gambar -->
-                        <div class="mb-2">
-                            <img id="editPreview" src="" alt="Preview Gambar"
-                                class="w-32 h-32 object-cover rounded border border-slate-600" />
-                        </div>
-
-                        <!-- Input Gambar Baru -->
-                        <input type="file" id="editGambar"
-                            class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white file:bg-gray-600 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:cursor-pointer"
-                            onchange="previewGambar(event)" />
-                    </div>
-
-                    <div class="flex justify-end gap-2">
-                        <button type="button" onclick="closeModal()"
-                            class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500">Batal</button>
-                        <button type="submit"
-                            class="px-4 py-2 bg-lime-500 text-white font-semibold rounded hover:bg-lime-400">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        class="fixed inset-0 z-50 items-center justify-center hidden overflow-auto bg-black bg-opacity-50">
+       <div class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
+           <h2 class="text-xl font-bold mb-4 text-white text-center">Edit Produk</h2>
+   
+           <form id="editForm" method="POST" enctype="multipart/form-data" class="grid gap-4">
+               @csrf
+               @method('PUT')
+   
+               <input type="hidden" id="editId" name="id">
+   
+               <!-- Nama Produk -->
+               <div>
+                   <label for="editNama" class="block mb-1 text-sm text-white">Nama Produk</label>
+                   <input type="text" id="editNama" name="name"
+                          class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+               </div>
+   
+               <!-- Deskripsi -->
+               <div>
+                   <label for="editDeskripsi" class="block mb-1 text-sm text-white">Deskripsi</label>
+                   <textarea id="editDeskripsi" name="description"
+                             class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500"></textarea>
+               </div>
+   
+               <!-- Harga -->
+               <div>
+                   <label for="editHarga" class="block mb-1 text-sm text-white">Harga</label>
+                   <input type="number" id="editHarga" name="price"
+                          class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
+               </div>
+   
+               <!-- Gambar -->
+               <div>
+                   <label for="editImage" class="block mb-1 text-sm text-white">Gambar Produk</label>
+                   <img id="previewGambar" src="#" alt="Preview" class="h-24 object-contain mb-2 border border-gray-600 rounded">
+                   <input type="file" id="editImage" name="image"
+                          class="w-full text-white file:bg-gray-600 file:border-0 file:px-3 file:py-1 file:rounded file:text-sm file:text-white">
+               </div>
+   
+               <!-- Tombol Aksi -->
+               <div class="flex justify-end gap-2">
+                   <button type="button" onclick="closeModal()"
+                           class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-white">
+                       Batal
+                   </button>
+                   <button type="submit"
+                           class="bg-lime-500 hover:bg-lime-600 px-4 py-2 rounded text-white">
+                       Simpan
+                   </button>
+               </div>
+           </form>
+       </div>
+   </div>
+   
 
 
         <!-- Tabel Produk -->
@@ -454,7 +459,7 @@
                             </thead>
                             <tbody id="produkBody" class="bg-gray-800">
                                 @forelse ($products as $produk)
-                                    <tr data-game="{{ $produk->game->name ?? '-' }}">
+                                <tr data-id="{{ $produk->id }}" data-game="{{ $produk->game->name ?? '-' }}">
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->id }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->name }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700">{{ $produk->description }}</td>
@@ -470,7 +475,8 @@
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             <button class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600"
                                                     onclick="openModal(this)">Edit</button>
-                                            <button class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>
+                                                    <button onclick="confirmDelete({{ $produk->id }})"
+                                                        class="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600">Hapus</button>                                                    
                                         </td>
                                     </tr>
                                 @empty
@@ -482,7 +488,22 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        
+
+                    </table>
+
+                    <!-- Modal Konfirmasi Hapus -->
+                    <div id="deleteModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
+                        <div class="bg-white text-black p-6 rounded-xl shadow-lg w-80">
+                            <h2 class="text-lg font-bold mb-4">Yakin ingin menghapus produk ini?</h2>
+                            <div class="flex justify-end space-x-3">
+                                <button onclick="closeDeleteModal()"
+                                    class="px-4 py-2 bg-gray-400 rounded hover:bg-gray-500 text-white">Batal</button>
+                                <button onclick="deleteProduct()"
+                                    class="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                    
 
                     </div>
                 </div>
@@ -657,17 +678,25 @@
     }
 
     function openModal(button) {
-        const row = button.closest('tr');
-        const cells = row.querySelectorAll('td');
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
 
-        document.getElementById('editId').value = cells[0].innerText;
-        document.getElementById('editNama').value = cells[1].innerText;
-        document.getElementById('editDeskripsi').value = cells[2].innerText;
-        document.getElementById('editHarga').value = cells[3].innerText;
+    const id = cells[0].innerText.trim();
 
-        document.getElementById('editModal').classList.remove('hidden');
-        document.getElementById('editModal').classList.add('flex');
-    }
+    document.getElementById('editId').value = id;
+    document.getElementById('editNama').value = cells[1].innerText.trim();
+    document.getElementById('editDeskripsi').value = cells[2].innerText.trim();
+    document.getElementById('editHarga').value = cells[3].innerText.trim().replace('Rp', '').replace('.', '');
+
+    // Set form action dynamically
+    const form = document.getElementById('editForm');
+    form.action = `/admin/edit/${id}`;
+
+    // Tampilkan modal
+    document.getElementById('editModal').classList.remove('hidden');
+    document.getElementById('editModal').classList.add('flex');
+}
+
 
     function closeModal() {
         document.getElementById('editModal').classList.add('hidden');
@@ -675,11 +704,91 @@
     }
 
     document.getElementById('editForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Simpan perubahan (di real case, kamu bisa kirim via AJAX atau form ke backend)
-        alert('Perubahan disimpan (simulasi).');
+    e.preventDefault(); // Hindari reload
+
+    const form = e.target;
+    const id = document.getElementById('editId').value;
+    const url = `/admin/edit/${id}`; // Pastikan route ini sesuai
+
+    const formData = new FormData(form);
+
+    fetch(url, {
+        method: 'POST', // Laravel butuh POST + spoofed _method = PUT
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        },
+        body: formData
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('Gagal update!');
+        return res.json();
+    })
+    .then(data => {
+        alert('Produk berhasil diupdate!');
         closeModal();
+        location.reload(); // Muat ulang untuk menampilkan data baru
+    })
+    .catch(err => {
+        alert('Terjadi kesalahan saat menyimpan data.');
+        console.error(err);
     });
+});
+
+
+
+    document.getElementById('editImage').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            document.getElementById('previewGambar').src = URL.createObjectURL(file);
+        }
+    });
+
 </script>
+
+<script>
+    let deleteId = null;
+
+    function confirmDelete(id) {
+        deleteId = id;
+        document.getElementById('deleteModal').classList.remove('hidden');
+        document.getElementById('deleteModal').classList.add('flex');
+    }
+
+    function closeDeleteModal() {
+        deleteId = null;
+        document.getElementById('deleteModal').classList.add('hidden');
+        document.getElementById('deleteModal').classList.remove('flex');
+    }
+
+    function deleteProduct() {
+        if (!deleteId) return;
+
+        fetch(`/admin/produk/${deleteId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Hapus baris dari tabel
+                const row = document.querySelector(`#produkBody tr[data-id="${deleteId}"]`);
+                if (row) row.remove();
+
+                alert('Produk berhasil dihapus!');
+            } else {
+                alert('Gagal menghapus produk.');
+            }
+            closeDeleteModal();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat menghapus.');
+            closeDeleteModal();
+        });
+    }
+</script>
+
 
 </html>
