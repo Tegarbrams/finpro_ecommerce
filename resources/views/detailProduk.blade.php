@@ -51,23 +51,22 @@
 
           <p class="text-2xl font-bold text-green-400 mb-4">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
 
-          <a href="/pembayaran" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white font-semibold inline-block">
-            Beli Sekarang
-          </a>
+          <a href="{{ route('pembayaran.form', $product->id) }}" class="bg-green-600 text-white px-4 py-2 rounded">Beli Sekarang</a>
         </div>
       </div>
 
       <!-- Galeri Screenshot -->
       @if(is_array($product->screenshots) && count($product->screenshots) > 0)
-      <div class="mt-8">
-        <h3 class="text-2xl font-semibold mb-4">Galeri Skin Akun</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          @foreach($product->screenshots as $screenshot)
-            <img src="{{ asset('storage/' . $screenshot) }}" class="rounded-lg shadow-md" alt="Screenshot">
-          @endforeach
-        </div>
-      </div>
-      @endif
+  <div class="mt-8">
+    <h3 class="text-2xl font-semibold mb-4">Galeri Skin Akun</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      @foreach($product->screenshots as $screenshot)
+        <img src="{{ asset('storage/' . str_replace('\\', '/', $screenshot)) }}" class="rounded-lg shadow-md" alt="Screenshot">
+      @endforeach
+    </div>
+  </div>
+@endif
+
     </section>
 
     <!-- Footer -->

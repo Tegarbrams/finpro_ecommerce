@@ -45,70 +45,62 @@
   <div class="min-h-screen flex items-center justify-center py-8">
     <div class="max-w-lg w-full bg-white p-6 rounded-2xl shadow-md space-y-6">
       <h2 class="text-2xl font-bold text-gray-800 text-center">Pembayaran via QRIS</h2>
-
+  
       <div class="flex flex-col items-center space-y-4">
-        <!-- Gambar QR Code (static sample) -->
-        <img src={{ asset("asset/Qris.png")}}
-             alt="QRIS Code" 
-             class="w-48 h-48 border rounded-lg shadow"/>
-
-        <div class="text-center">
-          <p class="text-gray-600">Silakan scan QRIS di atas menggunakan:</p>
-          <p class="font-semibold text-blue-700">OVO / GoPay / DANA / ShopeePay / dll</p>
-        </div>
-
-        <!-- Total Pembayaran -->
+        <img src="{{ asset('asset/Qris.png') }}" class="w-48 h-48 border rounded-lg shadow" alt="QRIS">
+        <p class="text-gray-600 text-center">Silakan scan QRIS di atas menggunakan:<br><strong class="text-blue-700">OVO / GoPay / DANA / ShopeePay / dll</strong></p>
+  
         <div class="w-full bg-gray-100 p-4 rounded-lg text-center">
           <p class="text-gray-700">Total Pembayaran:</p>
-          <p class="text-2xl font-bold text-green-600">Rp 850.000</p>
+          <p class="text-2xl font-bold text-green-600">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
         </div>
-
-<form class="space-y-4" onsubmit="handleSubmit(event)">
-  <!-- Input Nama -->
-  <div>
-    <label class="block mb-1 font-medium text-gray-700">Nama</label>
-    <input type="text" name="nama" required
-           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
+      </div>
+  
+      <form action="{{ route('pembayaran.submit', $product->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+        @csrf
+        <div>
+          <label class="block mb-1 font-medium text-gray-700">Nama</label>
+          <input type="text" name="name" required class="w-full border rounded-lg p-2 text-gray-700"/>
+        </div>
+        <div>
+          <label class="block mb-1 font-medium text-gray-700">Email</label>
+          <input type="email" name="email" required class="w-full border rounded-lg p-2 text-gray-700"/>
+        </div>
+        <div>
+          <label class="block mb-1 font-medium text-gray-700">Nomor HP</label>
+          <input type="tel" name="phone" required class="w-full border rounded-lg p-2 text-gray-700"/>
+        </div>
+        <div>
+          <label class="block mb-1 font-medium text-gray-700">Upload Bukti Pembayaran</label>
+          <input type="file" name="proof" accept="image/*" required class="w-full p-2 border rounded-lg"/>
+        </div>
+        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold">
+          Konfirmasi Pembayaran
+        </button>
+      </form>
+    </div>
   </div>
-
-  <!-- Input Email -->
-  <div>
-    <label class="block mb-1 font-medium text-gray-700">Email</label>
-    <input type="email" name="email" required
-           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
+  
+  @if(session('success'))
+  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+    <strong class="font-bold">Sukses!</strong>
+    <span class="block sm:inline">{{ session('success') }}</span>
   </div>
+@endif
 
-  <!-- Input Nomor HP -->
-  <div>
-    <label class="block mb-1 font-medium text-gray-700">Nomor HP</label>
-    <input type="tel" name="nomor_hp" required
-           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"/>
-  </div>
-
-  <!-- Upload Bukti Pembayaran -->
-  <div>
-    <label class="block mb-1 font-medium text-gray-700">Upload Bukti Pembayaran</label>
-    <input type="file" accept="image/*" required
-           class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2 file:bg-blue-600 file:text-white file:rounded-lg file:px-4 file:py-2 hover:file:bg-blue-700"/>
-  </div>
-
-  <!-- Tombol Konfirmasi -->
-  <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition">
-    Konfirmasi Pembayaran
-  </button>
-</form>
 
 
 <!-- POP-UP MODAL SUKSES -->
-<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-lg p-6 max-w-sm w-full text-center">
-    <h2 class="text-xl font-bold text-green-600 mb-4">Pembayaran Berhasil!</h2>
-    <p class="text-gray-700 mb-6">Bukti pembayaran berhasil dikirim. Silakan tunggu konfirmasi dari admin.</p>
-    <div class="flex justify-center gap-4">
-      <a href="index" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold">Oke Terimakasih</a>
-    </div>
+<div id="successModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-6 rounded-lg max-w-md w-full text-center">
+    <h2 class="text-xl font-bold text-green-600 mb-4">Pembayaran Diterima!</h2>
+    <p class="text-gray-700 mb-4">
+      Pembayaran anda sedang kami proses. Harap tunggu beberapa waktu. Informasi selanjutnya akan dikirim ke email atau no HP anda.
+    </p>
+    <a href="/" class="mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Kembali</a>
   </div>
 </div>
+
 
 <!-- Script: Handle Form -->
 <script>
@@ -122,5 +114,11 @@
     document.getElementById('successModal').classList.add('hidden');
   }
 </script>
+<script>
+  @if(session('success'))
+    document.getElementById('successModal').classList.remove('hidden');
+  @endif
+</script>
+
 </body>
 </html>

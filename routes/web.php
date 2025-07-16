@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\User\ProductController as UserProduct;
 
 
@@ -91,10 +93,6 @@ Route::middleware(['cek.login'])->group(function () {
         //(menggunakan controller untuk ambil data dari database)
         Route::get('/admin/listacc', [ProductController::class, 'index'])->name('admin.produk.index');
 
-        // Admin pages
-        Route::get('/admin/bayar', function () {
-            return view('Admin.bayar');
-        });
         
         //crud untuk dash admin
         Route::get('/admin/tambah', [ProductController::class, 'create'])->name('admin.produk.tambah');
@@ -126,6 +124,9 @@ Route::middleware(['cek.login'])->group(function () {
             Route::post('/update-login/{id}', [PenggunaController::class, 'updateLastLogin'])->name('admin.user.update-login');
         });
     });
+
+    Route::get('/admin/bayar', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
+    Route::put('/admin/bayar/{id}', [AdminPaymentController::class, 'updateStatus'])->name('admin.payments.update');
 });
 
 // Tampilkan semua akun
@@ -133,3 +134,6 @@ Route::get('/dataListAkun', [UserProduct::class, 'index'])->name('produk.index')
 
 // Tampilkan detail akun
 Route::get('/produk/{id}', [UserProduct::class, 'detail'])->name('produk.detail');
+
+Route::get('/pembayaran/{id}', [PaymentController::class, 'showForm'])->name('pembayaran.form');
+Route::post('/pembayaran/{id}', [PaymentController::class, 'submit'])->name('pembayaran.submit');

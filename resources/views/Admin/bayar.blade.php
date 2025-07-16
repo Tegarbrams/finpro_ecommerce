@@ -366,13 +366,11 @@
                             <div class="mt-4">
                                 <label for="filterStatus" class="block mb-2 text-sm font-medium text-white">Filter
                                     Status:</label>
-                                <select id="filterStatus" onchange="filterPembayaran()"
-                                    class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-lime-500">
-                                    <option value="all">Semua</option>
-                                    <option value="success">Sukses</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="failed">Gagal</option>
-                                </select>
+                                    <select id="statusSelect" class="bg-gray-700 text-white p-2 rounded w-full border border-gray-600">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Pembayaran sukses, menunggu akun dikirim">Pembayaran sukses, menunggu akun dikirim</option>
+                                        <option value="Pembayaran sukses, akun sudah dikirim">Pembayaran sukses, akun sudah dikirim</option>
+                                    </select>
                             </div>
                         </div>
 
@@ -383,7 +381,6 @@
                                     <tr class="bg-gray-700">
                                         <th class="px-4 py-2 border-b border-gray-700">ID</th>
                                         <th class="px-4 py-2 border-b border-gray-700">Nama Pembeli</th>
-                                        <th class="px-4 py-2 border-b border-gray-700">Metode</th>
                                         <th class="px-4 py-2 border-b border-gray-700">Jumlah</th>
                                         <th class="px-4 py-2 border-b border-gray-700">Tanggal</th>
                                         <th class="px-4 py-2 border-b border-gray-700">Status</th>
@@ -391,102 +388,77 @@
                                     </tr>
                                 </thead>
                                 <tbody id="pembayaranBody" class="bg-gray-800 text-sm">
-                                    <tr data-status="pending">
-                                        <td class="px-4 py-2 border-b border-gray-700">INV001</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">Maulana</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">QRis</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">Rp150.000</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">2025-07-14</td>
+                                    @foreach($payments as $payment)
+                                    <tr data-status="{{ strtolower($payment->status) }}"
+                                        data-id="{{ $payment->id }}"
+                                        data-proof="{{ asset('storage/'.$payment->proof) }}"
+                                        data-status-text="{{ $payment->status }}">
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $payment->id }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $payment->name }}</td>
+                                        <td class="px-4 py-2 border-b border-gray-700">
+                                            Rp{{ number_format($payment->product->price, 0, ',', '.') }}
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-gray-700">{{ $payment->created_at->format('Y-m-d') }}</td>
                                         <td class="px-4 py-2 border-b border-gray-700 text-yellow-400 font-semibold">
-                                            Pending</td>
+                                            {{ $payment->status }}
+                                        </td>
                                         <td class="px-4 py-2 border-b border-gray-700">
                                             <button onclick="openModal(this)"
                                                 class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600">Aksi</button>
                                         </td>
                                     </tr>
-                                    <tr data-status="success">
-                                        <td class="px-4 py-2 border-b border-gray-700">INV002</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">Dina</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">QRis</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">Rp250.000</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">2025-07-10</td>
-                                        <td class="px-4 py-2 border-b border-gray-700 text-green-400 font-semibold">
-                                            Sukses</td>
-                                        <td class="px-4 py-2 border-b border-gray-700">
-                                            <button onclick="openModal(this)"
-                                                class="px-3 py-1 text-sm bg-blue-500 rounded hover:bg-blue-600">Aksi</button>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                            
                     </div>
                 </div>
             </div>
 
             <!-- MODAL -->
             <!-- Modal Bukti Pembayaran -->
-            <!-- Modal Bukti Pembayaran -->
             <div id="modal"
-                class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
-                <div class="bg-gray-800 text-white p-6 rounded-2xl w-full max-w-lg shadow-2xl animate-fadeIn">
-
-                    <!-- Header -->
-                    <div class="mb-6 border-b pb-4 flex items-center space-x-3">
-                        <h3 class="text-xl font-semibold text-white">Bukti Pembayaran</h3>
-                    </div>
-
-                    <!-- Preview Bukti -->
-                    <div
-                        class="w-full h-72 bg-gray-900 border border-gray-700 rounded-lg mb-6 flex items-center justify-center shadow-inner relative overflow-hidden">
-                        <span id="previewText" class="text-gray-500 text-sm absolute">Belum ada gambar</span>
-                        <img id="previewImage" src="" alt="Bukti Pembayaran"
-                            class="hidden h-full object-contain" />
-                    </div>
-
-                    <!-- Status Pembayaran -->
-                    <div class="mb-2 text-sm font-semibold text-gray-300 text-center tracking-wide uppercase">
-                        Status Pembayaran
-                    </div>
-                    <div class="flex justify-center space-x-4 mb-6">
-                        <!-- Sukses -->
-                        <div onclick="selectStatusCircle('success')"
-                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-green-600 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
-                            <div id="circle-success" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
-                            <span class="text-sm text-white">Sukses</span>
-                        </div>
-
-                        <!-- Pending -->
-                        <div onclick="selectStatusCircle('pending')"
-                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-yellow-500 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
-                            <div id="circle-pending" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
-                            <span class="text-sm text-white">Pending</span>
-                        </div>
-
-                        <!-- Gagal -->
-                        <div onclick="selectStatusCircle('failed')"
-                            class="group cursor-pointer flex-1 bg-gray-700 hover:bg-red-500 rounded-lg p-3 flex flex-col items-center transition-all duration-200">
-                            <div id="circle-failed" class="w-6 h-6 bg-black rounded-full mb-1 transition-all"></div>
-                            <span class="text-sm text-white">Gagal</span>
-                        </div>
-                    </div>
-                    <input type="hidden" id="statusSelect" value="pending" />
-
-                    <!-- Footer -->
-                    <div class="pt-4 border-t border-gray-700 flex justify-end space-x-2">
-                        <button onclick="closeModal()"
-                            class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-white">Tutup</button>
-                        <button onclick="submitModal()"
-                            class="px-4 py-2 bg-lime-600 hover:bg-lime-700 rounded-lg text-white font-semibold">Simpan</button>
-                    </div>
+            class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div class="bg-gray-800 text-white p-6 rounded-2xl w-full max-w-lg shadow-2xl animate-fadeIn">
+                
+                <!-- Header -->
+                <div class="mb-6 border-b pb-4 flex items-center space-x-3">
+                    <h3 class="text-xl font-semibold text-white">Bukti Pembayaran</h3>
+                </div>
+        
+                <!-- Preview Bukti -->
+                <div class="w-full h-72 bg-gray-900 border border-gray-700 rounded-lg mb-6 flex items-center justify-center shadow-inner relative overflow-hidden">
+                    <span id="previewText" class="text-gray-500 text-sm absolute">Belum ada gambar</span>
+                    <img id="previewImage" src="" alt="Bukti Pembayaran" class="hidden h-full object-contain" />
+                </div>
+        
+                <!-- Status Pembayaran -->
+                <div class="mb-2 text-sm font-semibold text-gray-300 text-center tracking-wide uppercase">
+                    Status Pembayaran
+                </div>
+                <div class="flex flex-col gap-2 mb-6">
+                    <select id="statusSelect" class="bg-gray-700 text-white p-2 rounded w-full border border-gray-600">
+                        <option value="Pending">Pending</option>
+                        <option value="Pembayaran sukses, menunggu akun dikirim">Pembayaran sukses, menunggu akun dikirim</option>
+                        <option value="Pembayaran sukses, akun sudah dikirim">Pembayaran sukses, akun sudah dikirim</option>
+                    </select>
+                    
+        
+                    <!-- Optional Note -->
+                    <textarea id="statusNote"
+                        class="w-full bg-gray-700 text-white p-2 rounded border border-gray-600"
+                        placeholder="Catatan (opsional)..."></textarea>
+                </div>
+        
+                <!-- Footer -->
+                <div class="pt-4 border-t border-gray-700 flex justify-end space-x-2">
+                    <button onclick="closeModal()"
+                        class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-white">Tutup</button>
+                    <button onclick="submitModal()"
+                        class="px-4 py-2 bg-lime-600 hover:bg-lime-700 rounded-lg text-white font-semibold">Simpan</button>
                 </div>
             </div>
-
-
-
-
-
-
+        </div>
 
             {{-- Footer --}}
 
@@ -643,56 +615,66 @@
 
 <!-- Script -->
 <script>
-    function openBuktiModal(imageUrl, status = 'pending') {
-        const modal = document.getElementById('modal');
-        const previewImage = document.getElementById('previewImage');
-        const previewText = document.getElementById('previewText');
-
+    let selectedPaymentId = null;
+    
+    function openModal(button) {
+        const row = button.closest('tr');
+        selectedPaymentId = row.dataset.id;
+        const proofUrl = row.dataset.proof;
+        const currentStatus = row.dataset.statusText;
+    
         // Tampilkan gambar bukti
-        if (imageUrl) {
-            previewImage.src = imageUrl;
-            previewImage.classList.remove('hidden');
-            previewText.classList.add('hidden');
+        const img = document.getElementById('previewImage');
+        const text = document.getElementById('previewText');
+        if (proofUrl) {
+            img.src = proofUrl;
+            img.classList.remove('hidden');
+            text.classList.add('hidden');
         } else {
-            previewImage.src = '';
-            previewImage.classList.add('hidden');
-            previewText.classList.remove('hidden');
+            img.src = '';
+            img.classList.add('hidden');
+            text.classList.remove('hidden');
         }
-
-        // Set status awal
-        selectStatusCircle(status);
-
+    
+        // Set dropdown status
+        document.getElementById('statusSelect').value = currentStatus;
+    
+        // Kosongkan note
+        document.getElementById('statusNote').value = '';
+    
         // Tampilkan modal
-        modal.classList.remove('hidden');
+        document.getElementById('modal').classList.remove('hidden');
     }
-
+    
     function closeModal() {
         document.getElementById('modal').classList.add('hidden');
     }
-
-    function selectStatusCircle(status) {
-        const statusList = ['success', 'pending', 'failed'];
-        statusList.forEach(s => {
-            const el = document.getElementById(`circle-${s}`);
-            el.style.backgroundColor = 'black';
-        });
-
-        const selected = document.getElementById(`circle-${status}`);
-        if (status === 'success') selected.style.backgroundColor = '#22c55e';
-        if (status === 'pending') selected.style.backgroundColor = '#eab308';
-        if (status === 'failed') selected.style.backgroundColor = '#ef4444';
-
-        document.getElementById('statusSelect').value = status;
-    }
-
+    
     function submitModal() {
-        const selectedStatus = document.getElementById('statusSelect').value;
-        console.log("Status yang dipilih:", selectedStatus);
-        // Tambahkan logic kirim data ke backend via fetch/ajax di sini jika perlu
-
-        closeModal(); // Tutup modal setelah submit
+        const status = document.getElementById('statusSelect').value;
+        const note = document.getElementById('statusNote').value;
+    
+        fetch(`/admin/bayar/${selectedPaymentId}`, {
+            method: 'PUT',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ status, note })
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert('Gagal menyimpan status');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Terjadi kesalahan');
+        });
     }
-</script>
-
+    </script>
+    
 
 </html>
