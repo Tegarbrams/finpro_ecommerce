@@ -82,7 +82,7 @@ class PenggunaController extends Controller
                     'nama' => $request->name, // FIX: gunakan $request->name
                 ]);
 
-                return redirect('/dashboard')->with('success', 'Registrasi berhasil! Selamat datang.');
+                return redirect('/login')->with('success', 'Registrasi berhasil! Selamat datang.');
             }
 
         } catch (\Exception $e) {
@@ -242,4 +242,14 @@ class PenggunaController extends Controller
             return response()->json(['success' => false, 'message' => 'User not found']);
         }
     }
+
+    public function logout(Request $request)
+{
+    // Hapus semua data session
+    $request->session()->flush();
+
+    // Redirect ke halaman login atau home
+    return redirect('/login')->with('success', 'Berhasil logout!');
+}
+
 }

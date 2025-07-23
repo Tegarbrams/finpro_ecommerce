@@ -16,8 +16,8 @@ class CekSessionPembeli
     public function handle(Request $request, Closure $next): Response
     {
         // Cek apakah user adalah pembeli
-        if (session('role') !== 'pembeli') {
-            return redirect('/dashboard')->with('error', 'Akses ditolak. Hanya pembeli yang diizinkan.');
+        if (session('role') !== 'user') {
+            return redirect('/')->with('error', 'Akses ditolak. Hanya pembeli yang diizinkan.');
         }
         
         return $next($request);

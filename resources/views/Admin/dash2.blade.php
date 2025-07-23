@@ -249,35 +249,16 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/profile.html">
+                    <a href="{{ route('logout') }}"
+                        class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors text-white hover:text-red-500">
                         <div
-                            class="bg-gradient-to-tl from-blue-700 to-white-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gray-800 bg-center stroke-0 text-center xl:p-2.55">
-                            <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <title>spaceship</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF"
-                                        fill-rule="nonzero">
-                                        <g transform="translate(1716.000000, 291.000000)">
-                                            <g transform="translate(1.000000, 0.000000)">
-                                                <path class="opacity-60"
-                                                    d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
-                                                </path>
-                                                <path class=""
-                                                    d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
-                                                </path>
-                                                <path class=""
-                                                    d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
-                                                </path>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
+                            class="bg-gradient-to-tl from-red-600 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gray-800 bg-center text-center xl:p-2.55">
+                            <svg width="12px" height="12px" viewBox="0 0 46 42" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#fff" d="M13 28C17.432 28 21 22.529 21 18s-3.589-8-8-8-8 3.589-8 8 3.568 10 8 10z"/>
+                                <path fill="#fff" d="M22.883 32.86C20.761 32.012 17.324 31 13 31s-7.761 1.012-9.884 1.86C1.224 33.619 0 35.438 0 37.494V41c0 .553.447 1 1 1h24c.553 0 1-.447 1-1v-3.506c0-2.056-1.224-3.875-3.117-4.634z"/>
                             </svg>
                         </div>
-                        <span class="text-white ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Log
-                            Out</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Log Out</span>
                     </a>
                 </li>
 

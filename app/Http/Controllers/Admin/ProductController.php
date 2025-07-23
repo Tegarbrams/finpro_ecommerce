@@ -81,53 +81,40 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'nullable|string',
-            'price' => 'required|integer',
-            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
-            'screenshots.*' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
-        ]);
-    
-        $product = Product::findOrFail($id);
-    
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-    
-        if ($request->hasFile('thumbnail')) {
-            if ($product->thumbnail && Storage::disk('public')->exists($product->thumbnail)) {
-                Storage::disk('public')->delete($product->thumbnail);
-            }
-            $product->thumbnail = $request->file('thumbnail')->store('uploads/thumbnail', 'public');
-        }
-    
-        if ($request->hasFile('screenshots')) {
-            foreach ($product->screenshots ?? [] as $oldScreenshot) {
-                if (Storage::disk('public')->exists($oldScreenshot)) {
-                    Storage::disk('public')->delete($oldScreenshot);
-                }
-            }
-    
-            $newScreenshots = [];
-            foreach ($request->file('screenshots') as $screenshot) {
-                $path = $screenshot->store('uploads/screenshots', 'public');
-                $newScreenshots[] = $path;
-            }
-    
-            $product->screenshots = json_encode($newScreenshots);
-        }
-    
-        $product->save();
-    
-        return response()->json([
-            'success' => true,
-            'message' => 'Produk berhasil diperbarui!',
-            'product' => $product
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'price' => 'required|integer',
+        'description' => 'nullable|string',
+        'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
+        'screenshots.*' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
+    ]);
+
+    $product = Product::findOrFail($id);
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->description = $request->description;
+
+    // Update thumbnail jika diunggah
+    if ($request->hasFile('thumbnail')) {
+        $thumbnailPath = $request->file('thumbnail')->store('uploads/thumbnail', 'public');
+        $product->thumbnail = $thumbnailPath;
     }
-    
+
+    // Update screenshots jika diunggah
+    if ($request->hasFile('screenshots')) {
+        $newScreenshots = [];
+        foreach ($request->file('screenshots') as $screenshot) {
+            $path = $screenshot->store('uploads/screenshots', 'public');
+            $newScreenshots[] = $path;
+        }
+        $product->screenshots = json_encode($newScreenshots);
+    }
+
+    $product->save();
+
+    return response()->json(['message' => 'Produk berhasil diupdate.']);
+}
 
     public function destroy($id)
 {

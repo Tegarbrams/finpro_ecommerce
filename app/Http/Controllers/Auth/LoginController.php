@@ -84,8 +84,8 @@ class LoginController extends Controller
             case 'admin':
                 return redirect()->intended('/admin/dashboard');
             case 'user':
-            case 'pembeli':
-                return redirect()->intended('/dashboard');
+            case 'user':
+                return redirect()->intended('/');
             default:
                 return redirect('/login')->with('error', 'Role user tidak valid.');
         }

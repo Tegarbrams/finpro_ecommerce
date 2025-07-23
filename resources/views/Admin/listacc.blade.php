@@ -360,8 +360,8 @@
                 class="bg-gray-800 text-slate-200 w-full max-w-md p-6 m-auto rounded-xl shadow-xl border border-slate-700">
                 <h2 class="text-xl font-bold mb-4 text-white text-center">Edit Produk</h2>
 
-                <form id="editForm" method="POST" action="{{ route('admin.produk.update', '__ID__') }}"
-                    enctype="multipart/form-data">
+                <form id="editForm" method="POST" enctype="multipart/form-data">
+
 
                     @csrf
                     @method('PUT')

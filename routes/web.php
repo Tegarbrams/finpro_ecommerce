@@ -100,6 +100,7 @@ Route::middleware(['cek.login'])->group(function () {
         Route::get('/admin/edit/{id}', [ProductController::class, 'edit'])->name('admin.produk.edit');
         Route::put('/admin/edit/{id}', [ProductController::class, 'update'])->name('admin.produk.update');
         Route::delete('/admin/produk/{id}', [ProductController::class, 'destroy'])->name('admin.produk.destroy');
+        Route::put('/admin/produk/{id}', [ProductController::class, 'update'])->name('admin.produk.update');
 
 
 
@@ -128,6 +129,9 @@ Route::middleware(['cek.login'])->group(function () {
     Route::get('/admin/bayar', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
     Route::put('/admin/bayar/{id}', [AdminPaymentController::class, 'updateStatus'])->name('admin.payments.update');
 });
+
+Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
+
 
 // Tampilkan semua akun
 Route::get('/dataListAkun', [UserProduct::class, 'index'])->name('produk.index');
