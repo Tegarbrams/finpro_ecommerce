@@ -70,7 +70,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="mt-20 bg-black text-center py-6">
+    <footer class="mt-36 bg-black text-center py-6">
       <p class="text-gray-400">&copy; 2025 GameMarket. Semua hak dilindungi.</p>
       <div class="mt-2">
         <a href="#" class="text-gray-400 hover:text-white mr-4">Kebijakan Privasi</a>
